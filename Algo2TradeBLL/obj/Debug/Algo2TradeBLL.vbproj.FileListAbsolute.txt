@@ -1,0 +1,152 @@
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\MySql.Data.dll
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\Utilities.dll
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\NLog.dll
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\Utilities.pdb
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\Utilities.xml
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\NLog.xml
+G:\algo2trade\Algo2Trade BackTester\BLL\obj\Debug\Algo2TradeBLL.vbprojResolveAssemblyReference.cache
+G:\algo2trade\Algo2Trade BackTester\BLL\obj\Debug\Algo2TradeBLL.vbproj.GenerateResource.Cache
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\Algo2TradeBLL.dll.config
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\Algo2TradeBLL.dll
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\Algo2Trade BackTester\BLL\bin\Debug\Algo2TradeBLL.xml
+G:\algo2trade\Algo2Trade BackTester\BLL\obj\Debug\Algo2TradeBLL.Resources.resources
+G:\algo2trade\Algo2Trade BackTester\BLL\obj\Debug\Algo2TradeBLL.dll
+G:\algo2trade\Algo2Trade BackTester\BLL\obj\Debug\Algo2TradeBLL.xml
+G:\algo2trade\Algo2Trade BackTester\BLL\obj\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll.config
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.xml
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\MySql.Data.dll
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.dll
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\NLog.dll
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.pdb
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.xml
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\NLog.xml
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.Resources.resources
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.GenerateResource.Cache
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.dll
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.xml
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.pdb
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll.config
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.pdb
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.xml
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.dll
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\MySql.Data.dll
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.dll
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\NLog.dll
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.pdb
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.xml
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.dll.config
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.pdb
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.xml
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\NLog.xml
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbprojAssemblyReference.cache
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.Resources.resources
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.GenerateResource.cache
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CoreCompileInputs.cache
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CopyComplete
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.dll
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.xml
+H:\Algo2Trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.dll.config
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbprojAssemblyReference.cache
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CoreCompileInputs.cache
+G:\algo2trade\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CopyComplete
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll.config
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.pdb
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\MySql.Data.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\NLog.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.pdb
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\Utilities.dll.config
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.pdb
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\bin\Debug\NLog.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbprojAssemblyReference.cache
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.Resources.resources
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.GenerateResource.cache
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CoreCompileInputs.cache
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CopyComplete
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll.config
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\MySql.Data.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\NLog.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.dll.config
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\NLog.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbprojAssemblyReference.cache
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.Resources.resources
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.GenerateResource.cache
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CoreCompileInputs.cache
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CopyComplete
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll.config
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\MySql.Data.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\NLog.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.dll.config
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\MySql.Data.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\NLog.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbprojAssemblyReference.cache
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.Resources.resources
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.GenerateResource.cache
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CoreCompileInputs.cache
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CopyComplete
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbprojAssemblyReference.cache
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.Resources.resources
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.GenerateResource.cache
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CoreCompileInputs.cache
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll.config
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\MySql.Data.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\NLog.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.pdb
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.dll.config
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\NLog.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CopyComplete
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.pdb

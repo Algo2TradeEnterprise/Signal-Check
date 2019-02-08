@@ -1,0 +1,34 @@
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\Utilities.dll.config
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\HtmlAgilityPack.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\MySql.Data.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\Newtonsoft.Json.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\NLog.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\HtmlAgilityPack.pdb
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\HtmlAgilityPack.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\Newtonsoft.Json.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\x64\Debug\NLog.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\x64\Debug\Utilities.Resources.resources
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\x64\Debug\Utilities.vbproj.GenerateResource.Cache
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\x64\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\x64\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\x64\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\Utilities.dll.config
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\HtmlAgilityPack.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\MySql.Data.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\Newtonsoft.Json.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\NLog.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\HtmlAgilityPack.pdb
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\HtmlAgilityPack.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\Newtonsoft.Json.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\x64\Debug\NLog.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\x64\Debug\Utilities.Resources.resources
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\x64\Debug\Utilities.vbproj.GenerateResource.Cache
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\x64\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\x64\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\x64\Debug\Utilities.pdb

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Utilities
+</name>
+</assembly>
+<members>
+<member name="T:Utilities.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Utilities.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Utilities.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Utilities.ErrorHandlers.AuthenticationException">
+ <summary>
+ Custom class for handling business exceptions
+ </summary>
+</member>
+<member name="M:Utilities.ErrorHandlers.AuthenticationException.#ctor">
+ <summary>
+ Default constructor
+ </summary>
+</member>
+<member name="M:Utilities.ErrorHandlers.AuthenticationException.#ctor(System.String)">
+ <summary>
+ Creates object with only the exception message
+ </summary>
+ <param name="message">Message associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.AuthenticationException.#ctor(System.String,System.String)">
+ <summary>
+ Creates object with only the exception message
+ </summary>
+ <param name="message">Message associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.AuthenticationException.#ctor(System.String,System.Exception)">
+ <summary>
+ Creates object with the exception message and inner exception
+ </summary>
+ <param name="message">Message associated with the exception</param>
+ <param name="inner">Inner exception associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.AuthenticationException.#ctor(System.String,System.Exception,System.String)">
+ <summary>
+ Creates object with the exception message and inner exception
+ </summary>
+ <param name="message">Message associated with the exception</param>
+ <param name="inner">Inner exception associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.AuthenticationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+ <summary>
+ Creates object which is seralizable
+ </summary>
+ <param name="info">Serialization information</param>
+ <param name="context">Stream to be serialized</param>
+</member>
+<member name="T:Utilities.ErrorHandlers.ForbiddenException">
+ <summary>
+ Custom class for handling business exceptions
+ </summary>
+</member>
+<member name="M:Utilities.ErrorHandlers.ForbiddenException.#ctor">
+ <summary>
+ Default constructor
+ </summary>
+</member>
+<member name="M:Utilities.ErrorHandlers.ForbiddenException.#ctor(System.String)">
+ <summary>
+ Creates object with only the exception message
+ </summary>
+ <param name="message">Message associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.ForbiddenException.#ctor(System.String,System.String)">
+ <summary>
+ Creates object with only the exception message
+ </summary>
+ <param name="message">Message associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.ForbiddenException.#ctor(System.String,System.Exception)">
+ <summary>
+ Creates object with the exception message and inner exception
+ </summary>
+ <param name="message">Message associated with the exception</param>
+ <param name="inner">Inner exception associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.ForbiddenException.#ctor(System.String,System.Exception,System.String)">
+ <summary>
+ Creates object with the exception message and inner exception
+ </summary>
+ <param name="message">Message associated with the exception</param>
+ <param name="inner">Inner exception associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.ForbiddenException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+ <summary>
+ Creates object which is seralizable
+ </summary>
+ <param name="info">Serialization information</param>
+ <param name="context">Stream to be serialized</param>
+</member>
+<member name="T:Utilities.ErrorHandlers.ParseException">
+ <summary>
+ Custom class for handling business exceptions
+ </summary>
+</member>
+<member name="M:Utilities.ErrorHandlers.ParseException.#ctor">
+ <summary>
+ Default constructor
+ </summary>
+</member>
+<member name="M:Utilities.ErrorHandlers.ParseException.#ctor(System.String)">
+ <summary>
+ Creates object with only the exception message
+ </summary>
+ <param name="message">Message associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.ParseException.#ctor(System.String,System.String)">
+ <summary>
+ Creates object with only the exception message
+ </summary>
+ <param name="message">Message associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.ParseException.#ctor(System.String,System.Exception)">
+ <summary>
+ Creates object with the exception message and inner exception
+ </summary>
+ <param name="message">Message associated with the exception</param>
+ <param name="inner">Inner exception associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.ParseException.#ctor(System.String,System.Exception,System.String)">
+ <summary>
+ Creates object with the exception message and inner exception
+ </summary>
+ <param name="message">Message associated with the exception</param>
+ <param name="inner">Inner exception associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.ParseException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+ <summary>
+ Creates object which is seralizable
+ </summary>
+ <param name="info">Serialization information</param>
+ <param name="context">Stream to be serialized</param>
+</member>
+<member name="T:Utilities.ErrorHandlers.URLMisFormedException">
+ <summary>
+ Custom class for handling business exceptions
+ </summary>
+</member>
+<member name="M:Utilities.ErrorHandlers.URLMisFormedException.#ctor">
+ <summary>
+ Default constructor
+ </summary>
+</member>
+<member name="M:Utilities.ErrorHandlers.URLMisFormedException.#ctor(System.String)">
+ <summary>
+ Creates object with only the exception message
+ </summary>
+ <param name="message">Message associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.URLMisFormedException.#ctor(System.String,System.String)">
+ <summary>
+ Creates object with only the exception message
+ </summary>
+ <param name="message">Message associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.URLMisFormedException.#ctor(System.String,System.Exception)">
+ <summary>
+ Creates object with the exception message and inner exception
+ </summary>
+ <param name="message">Message associated with the exception</param>
+ <param name="inner">Inner exception associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.URLMisFormedException.#ctor(System.String,System.Exception,System.String)">
+ <summary>
+ Creates object with the exception message and inner exception
+ </summary>
+ <param name="message">Message associated with the exception</param>
+ <param name="inner">Inner exception associated with the exception</param>
+</member>
+<member name="M:Utilities.ErrorHandlers.URLMisFormedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+ <summary>
+ Creates object which is seralizable
+ </summary>
+ <param name="info">Serialization information</param>
+ <param name="context">Stream to be serialized</param>
+</member>
+<member name="T:Utilities.Network.WebSocket">
+ <summary>
+ A wrapper for .Net's ClientWebSocket with callbacks
+ </summary>
+</member>
+<member name="M:Utilities.Network.WebSocket.#ctor(System.Threading.CancellationTokenSource,System.Int32)">
+ <summary>
+ Initialize WebSocket class
+ </summary>
+ <param name="canceller">Cancellation token source for coming out on cancellation.</param>
+ <param name="bufferLength">Size of buffer to keep byte stream chunk.</param>
+</member>
+<member name="M:Utilities.Network.WebSocket.IsConnected">
+ <summary>
+ Check if WebSocket is connected or not
+ </summary>
+ <returns>True if connection is live</returns>
+</member>
+<member name="M:Utilities.Network.WebSocket.Connect(System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+ <summary>
+ Connect to WebSocket
+ </summary>
+</member>
+<member name="M:Utilities.Network.WebSocket.Send(System.String)">
+ <summary>
+ Send message to socket connection
+ </summary>
+ <param name="Message">Message to send</param>
+</member>
+<member name="M:Utilities.Network.WebSocket.Close(System.Boolean)">
+ <summary>
+ Close the WebSocket connection
+ </summary>
+ <param name="Abort">If true WebSocket will not send 'Close' signal to server. Used when connection is disconnected due to netork issues.</param>
+</member>
+</members>
+</doc>

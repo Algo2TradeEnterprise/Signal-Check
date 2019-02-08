@@ -1,0 +1,81 @@
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.exe.config
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.exe
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbprojAssemblyReference.cache
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade_Signal_Check.frmMain.resources
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade_Signal_Check.Resources.resources
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.GenerateResource.cache
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.CoreCompileInputs.cache
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.exe
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\NLog.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\MySql.Data.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.dll.config
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\NLog.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.CopyComplete
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.dll.config
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.exe.config
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.exe
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\MySql.Data.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\NLog.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.dll.config
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.dll.config
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\NLog.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbprojAssemblyReference.cache
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade_Signal_Check.frmMain.resources
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade_Signal_Check.Resources.resources
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.GenerateResource.cache
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.CoreCompileInputs.cache
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.CopyComplete
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.exe
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.pdb
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbprojAssemblyReference.cache
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade_Signal_Check.frmMain.resources
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade_Signal_Check.Resources.resources
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.GenerateResource.cache
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.CoreCompileInputs.cache
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.exe.config
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.exe
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.pdb
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\MySql.Data.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\NLog.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.pdb
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.dll.config
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.pdb
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.dll.config
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\NLog.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.CopyComplete
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.exe
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.xml
+G:\algo2trade\Algo2Trade Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.pdb

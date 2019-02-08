@@ -1,0 +1,229 @@
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\Utilities.dll.config
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\Utilities.dll
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\Utilities.pdb
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\Utilities.xml
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\HtmlAgilityPack.dll
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\MySql.Data.dll
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\Newtonsoft.Json.dll
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\NLog.dll
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\HtmlAgilityPack.pdb
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\HtmlAgilityPack.xml
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\Newtonsoft.Json.xml
+C:\Sujoy\My Works\Changer\Utilities\bin\Debug\NLog.xml
+C:\Sujoy\My Works\Changer\Utilities\obj\Debug\Utilities.vbprojResolveAssemblyReference.cache
+C:\Sujoy\My Works\Changer\Utilities\obj\Debug\Utilities.Resources.resources
+C:\Sujoy\My Works\Changer\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.Cache
+C:\Sujoy\My Works\Changer\Utilities\obj\Debug\Utilities.vbproj.CoreCompileInputs.cache
+C:\Sujoy\My Works\Changer\Utilities\obj\Debug\Utilities.dll
+C:\Sujoy\My Works\Changer\Utilities\obj\Debug\Utilities.xml
+C:\Sujoy\My Works\Changer\Utilities\obj\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\Utilities.dll.config
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\HtmlAgilityPack.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\MySql.Data.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\Newtonsoft.Json.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\NLog.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\HtmlAgilityPack.pdb
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\HtmlAgilityPack.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\Newtonsoft.Json.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\bin\Debug\NLog.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\Debug\Utilities.vbprojResolveAssemblyReference.cache
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\Debug\Utilities.Resources.resources
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.Cache
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\V3\Changer\Utilities\obj\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\Utilities.dll.config
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\MySql.Data.dll
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\HtmlAgilityPack.pdb
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\HtmlAgilityPack.xml
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\Newtonsoft.Json.xml
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\NLog.xml
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\obj\Debug\Utilities.vbprojResolveAssemblyReference.cache
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\obj\Debug\Utilities.Resources.resources
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.Cache
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\obj\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\obj\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\obj\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\HtmlAgilityPack.dll
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\Newtonsoft.Json.dll
+E:\Personal\Programs\GaneshaStock\Quick Strategy\Utilities\bin\Debug\NLog.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\Debug\Utilities.vbprojResolveAssemblyReference.cache
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\Debug\Utilities.Resources.resources
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.Cache
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\obj\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\Utilities.dll.config
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\HtmlAgilityPack.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\MySql.Data.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\Newtonsoft.Json.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\NLog.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\HtmlAgilityPack.pdb
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\HtmlAgilityPack.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\Newtonsoft.Json.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0\Utilities\bin\Debug\NLog.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\Utilities.dll.config
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\Utilities.pdb
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\HtmlAgilityPack.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\MySql.Data.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\Newtonsoft.Json.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\NLog.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\HtmlAgilityPack.pdb
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\HtmlAgilityPack.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\Newtonsoft.Json.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\bin\Debug\NLog.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.vbprojResolveAssemblyReference.cache
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.Resources.resources
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.Cache
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.dll
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.xml
+E:\Personal\Programs\GaneshaStock\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.pdb
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\Utilities.dll.config
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\Utilities.dll
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\Utilities.pdb
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\Utilities.xml
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\MySql.Data.dll
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\Newtonsoft.Json.dll
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\NLog.dll
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\Newtonsoft.Json.xml
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\bin\Debug\NLog.xml
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.vbprojResolveAssemblyReference.cache
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.Resources.resources
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.Cache
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.dll
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.xml
+G:\algo2trade\ATM v1.0 - BackTest\Utilities\obj\Debug\Utilities.pdb
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.dll.config
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.dll
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.pdb
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.xml
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\MySql.Data.dll
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\Newtonsoft.Json.dll
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\NLog.dll
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\Newtonsoft.Json.xml
+G:\algo2trade\Algo2Trade BackTester\Utilities\bin\Debug\NLog.xml
+G:\algo2trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.Resources.resources
+G:\algo2trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.Cache
+G:\algo2trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.dll
+G:\algo2trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.xml
+G:\algo2trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.pdb
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.dll.config
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.dll
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.pdb
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.xml
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\HtmlAgilityPack.dll
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\MySql.Data.dll
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\Newtonsoft.Json.dll
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\NLog.dll
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\HtmlAgilityPack.pdb
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\HtmlAgilityPack.xml
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\Newtonsoft.Json.xml
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\bin\Debug\NLog.xml
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbprojAssemblyReference.cache
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.Resources.resources
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.cache
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbproj.CoreCompileInputs.cache
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbproj.CopyComplete
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.dll
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.xml
+H:\Algo2Trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.pdb
+G:\algo2trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbprojAssemblyReference.cache
+G:\algo2trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbproj.CoreCompileInputs.cache
+G:\algo2trade\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbproj.CopyComplete
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.dll.config
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.pdb
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\Utilities.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\HtmlAgilityPack.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\MySql.Data.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\Newtonsoft.Json.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\NLog.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\HtmlAgilityPack.pdb
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\HtmlAgilityPack.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\Newtonsoft.Json.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\bin\Debug\NLog.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbprojAssemblyReference.cache
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.Resources.resources
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.cache
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbproj.CoreCompileInputs.cache
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.vbproj.CopyComplete
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.dll
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.xml
+D:\algo2trade\Code\Algo2Trade BackTester\Utilities\obj\Debug\Utilities.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.dll.config
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\MySql.Data.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\Newtonsoft.Json.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\NLog.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\Newtonsoft.Json.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\bin\Debug\NLog.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbprojAssemblyReference.cache
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.Resources.resources
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.cache
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.CoreCompileInputs.cache
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.CopyComplete
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.dll
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.xml
+G:\algo2trade\GitHub\Algo2TradeEnterprise\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.dll.config
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\HtmlAgilityPack.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\MySql.Data.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\Newtonsoft.Json.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\NLog.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\HtmlAgilityPack.pdb
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\HtmlAgilityPack.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\Newtonsoft.Json.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\bin\Debug\NLog.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbprojAssemblyReference.cache
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.Resources.resources
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.cache
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.CoreCompileInputs.cache
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.CopyComplete
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.dll
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.xml
+D:\algo2trade\Code\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.pdb
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.dll.config
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.dll
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.pdb
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\Utilities.xml
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\HtmlAgilityPack.dll
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\MySql.Data.dll
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\Newtonsoft.Json.dll
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\NLog.dll
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\HtmlAgilityPack.pdb
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\HtmlAgilityPack.xml
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\Newtonsoft.Json.xml
+G:\algo2trade\Algo2Trade Signal Check\Utilities\bin\Debug\NLog.xml
+G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbprojAssemblyReference.cache
+G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.Resources.resources
+G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.cache
+G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.CoreCompileInputs.cache
+G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.CopyComplete
+G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.dll
+G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.xml
+G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.pdb
