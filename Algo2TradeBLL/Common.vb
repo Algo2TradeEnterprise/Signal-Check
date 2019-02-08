@@ -1,0 +1,603 @@
+﻿Imports System.Threading
+Imports MySql.Data.MySqlClient
+Imports Utilities.DAL
+
+Public Class Common
+    Implements IDisposable
+    Dim conn As MySqlConnection
+    Private _canceller As CancellationTokenSource
+#Region "Events/Event handlers"
+    Public Event DocumentDownloadComplete()
+    Public Event DocumentRetryStatus(ByVal currentTry As Integer, ByVal totalTries As Integer)
+    Public Event Heartbeat(ByVal msg As String)
+    Public Event WaitingFor(ByVal elapsedSecs As Integer, ByVal totalSecs As Integer, ByVal msg As String)
+    'The below functions are needed to allow the derived classes to raise the above two events
+    Protected Overridable Sub OnDocumentDownloadComplete()
+        RaiseEvent DocumentDownloadComplete()
+    End Sub
+    Protected Overridable Sub OnDocumentRetryStatus(ByVal currentTry As Integer, ByVal totalTries As Integer)
+        RaiseEvent DocumentRetryStatus(currentTry, totalTries)
+    End Sub
+    Protected Overridable Sub OnHeartbeat(ByVal msg As String)
+        RaiseEvent Heartbeat(msg)
+    End Sub
+    Protected Overridable Sub OnWaitingFor(ByVal elapsedSecs As Integer, ByVal totalSecs As Integer, ByVal msg As String)
+        RaiseEvent WaitingFor(elapsedSecs, totalSecs, msg)
+    End Sub
+#End Region
+
+#Region "Constructor"
+    Public Sub New(calceller As CancellationTokenSource)
+        _canceller = calceller
+    End Sub
+#End Region
+
+#Region "Enum"
+    Public Enum DataBaseTable
+        Intraday_Cash = 1
+        Intraday_Commodity
+        Intraday_Currency
+        Intraday_Futures
+        EOD_Cash
+        EOD_Commodity
+        EOD_Currency
+        EOD_Futures
+    End Enum
+#End Region
+
+#Region "Public Methods"
+    Public Function GetPayloadAtPositionOrPositionMinus1(ByVal beforeThisTime As DateTime, ByVal inputPayload As Dictionary(Of Date, Decimal)) As KeyValuePair(Of DateTime, Decimal)
+        Dim ret As KeyValuePair(Of DateTime, Decimal) = Nothing
+        If inputPayload IsNot Nothing Then
+            Dim tempret = inputPayload.Where(Function(x)
+                                                 Return x.Key < beforeThisTime
+                                             End Function)
+            If tempret IsNot Nothing Then
+                ret = tempret.LastOrDefault
+            End If
+        End If
+        Return ret
+    End Function
+    Public Function GetSubPayload(ByVal inputPayload As Dictionary(Of Date, Decimal),
+                                     ByVal beforeThisTime As DateTime,
+                                      ByVal numberOfItemsToRetrive As Integer,
+                                      ByVal includeTimePassedAsOneOftheItems As Boolean) As List(Of KeyValuePair(Of DateTime, Decimal))
+        Dim ret As List(Of KeyValuePair(Of DateTime, Decimal)) = Nothing
+        If inputPayload IsNot Nothing Then
+            'Find the index of the time passed
+            Dim firstIndexOfKey As Integer = -1
+            Dim loopTerminatedOnCondition As Boolean = False
+            For Each item In inputPayload
+                firstIndexOfKey += 1
+                If item.Key >= beforeThisTime Then
+                    loopTerminatedOnCondition = True
+                    Exit For
+                End If
+            Next
+            If loopTerminatedOnCondition Then 'Specially useful for only 1 count of item is there
+                If Not includeTimePassedAsOneOftheItems Then
+                    firstIndexOfKey -= 1
+                End If
+            End If
+            If firstIndexOfKey >= 0 Then
+                Dim startIndex As Integer = Math.Max((firstIndexOfKey - numberOfItemsToRetrive) + 1, 0)
+                Dim revisedNumberOfItemsToRetrieve As Integer = Math.Min(numberOfItemsToRetrive, (firstIndexOfKey - startIndex) + 1)
+                Dim referencePayLoadAsList = inputPayload.ToList
+                ret = referencePayLoadAsList.GetRange(startIndex, revisedNumberOfItemsToRetrieve)
+            End If
+        End If
+        Return ret
+    End Function
+    Public Function GetSubPayload(ByVal inputPayload As Dictionary(Of Date, Payload),
+                                     ByVal beforeThisTime As DateTime,
+                                      ByVal numberOfItemsToRetrive As Integer,
+                                      ByVal includeTimePassedAsOneOftheItems As Boolean) As List(Of KeyValuePair(Of DateTime, Payload))
+        Dim ret As List(Of KeyValuePair(Of DateTime, Payload)) = Nothing
+        If inputPayload IsNot Nothing Then
+            'Find the index of the time passed
+            Dim firstIndexOfKey As Integer = -1
+            Dim loopTerminatedOnCondition As Boolean = False
+            For Each item In inputPayload
+
+                firstIndexOfKey += 1
+                If item.Key >= beforeThisTime Then
+                    loopTerminatedOnCondition = True
+                    Exit For
+                End If
+            Next
+            If loopTerminatedOnCondition Then 'Specially useful for only 1 count of item is there
+                If Not includeTimePassedAsOneOftheItems Then
+                    firstIndexOfKey -= 1
+                End If
+            End If
+            If firstIndexOfKey >= 0 Then
+                Dim startIndex As Integer = Math.Max((firstIndexOfKey - numberOfItemsToRetrive) + 1, 0)
+                Dim revisedNumberOfItemsToRetrieve As Integer = Math.Min(numberOfItemsToRetrive, (firstIndexOfKey - startIndex) + 1)
+                Dim referencePayLoadAsList = inputPayload.ToList
+                ret = referencePayLoadAsList.GetRange(startIndex, revisedNumberOfItemsToRetrieve)
+            End If
+        End If
+        Return ret
+    End Function
+    Public Function ConvertPayloadsToXMinutes(ByVal payloads As Dictionary(Of Date, Payload), ByVal minute As Integer) As Dictionary(Of Date, Payload)
+        Dim XMinutePayloads As Dictionary(Of Date, Payload) = Nothing
+        If payloads IsNot Nothing AndAlso payloads.Count > 0 Then
+            Dim newCandleStarted As Boolean = True
+            Dim runningOutputPayload As Payload = Nothing
+            Dim startTime As Date = DateTime.MaxValue
+            Dim endTime As Date = Date.MaxValue
+            For Each payload In payloads.Values
+
+                If payload.PayloadDate >= endTime Then
+                    newCandleStarted = True
+                    If runningOutputPayload IsNot Nothing Then
+                        If XMinutePayloads Is Nothing Then XMinutePayloads = New Dictionary(Of Date, Payload)
+                        XMinutePayloads.Add(runningOutputPayload.PayloadDate, runningOutputPayload)
+                    End If
+                End If
+                If newCandleStarted Then
+                    newCandleStarted = False
+                    startTime = payload.PayloadDate
+                    endTime = payload.PayloadDate.AddMinutes(minute)
+                    Dim prevPayload As Payload = runningOutputPayload
+                    runningOutputPayload = New Payload(Payload.CandleDataSource.Calculated)
+                    runningOutputPayload.PayloadDate = startTime
+                    runningOutputPayload.Open = payload.Open
+                    runningOutputPayload.High = payload.High
+                    runningOutputPayload.Low = payload.Low
+                    runningOutputPayload.Close = payload.Close
+                    runningOutputPayload.Volume = payload.Volume
+                    runningOutputPayload.TradingSymbol = payload.TradingSymbol
+                    runningOutputPayload.PreviousCandlePayload = prevPayload
+                Else
+                    runningOutputPayload.High = Math.Max(runningOutputPayload.High, payload.High)
+                    runningOutputPayload.Low = Math.Min(runningOutputPayload.Low, payload.Low)
+                    runningOutputPayload.Close = payload.Close
+                    runningOutputPayload.Volume = runningOutputPayload.Volume + payload.Volume
+                End If
+                If (runningOutputPayload.PreviousCandlePayload IsNot Nothing AndAlso runningOutputPayload.PayloadDate.Date <> runningOutputPayload.PreviousCandlePayload.PayloadDate.Date) Then
+                    runningOutputPayload.CumulativeVolume = runningOutputPayload.Volume
+                ElseIf (runningOutputPayload.PreviousCandlePayload Is Nothing) Then
+                    runningOutputPayload.CumulativeVolume = runningOutputPayload.Volume
+                ElseIf (runningOutputPayload.PreviousCandlePayload IsNot Nothing AndAlso runningOutputPayload.PayloadDate.Date = runningOutputPayload.PreviousCandlePayload.PayloadDate.Date) Then
+                    runningOutputPayload.CumulativeVolume = runningOutputPayload.PreviousCandlePayload.CumulativeVolume + runningOutputPayload.Volume
+                End If
+            Next
+            If runningOutputPayload IsNot Nothing Then
+                If XMinutePayloads Is Nothing Then XMinutePayloads = New Dictionary(Of Date, Payload)
+                XMinutePayloads.Add(runningOutputPayload.PayloadDate, runningOutputPayload)
+            End If
+        End If
+        Return XMinutePayloads
+    End Function
+    Public Function ConvetDecimalToPayload(ByVal targetfield As Payload.PayloadFields, ByVal inputpayload As Dictionary(Of Date, Decimal), ByRef outputpayload As Dictionary(Of Date, Payload))
+        Dim output As Payload
+        outputpayload = New Dictionary(Of Date, Payload)
+        For Each runningitem In inputpayload
+            output = New Payload(Payload.CandleDataSource.Chart)
+            output.PayloadDate = runningitem.Key
+            Select Case targetfield
+                Case Payload.PayloadFields.Close
+                    output.Close = runningitem.Value
+                Case Payload.PayloadFields.C_AVG_HL
+                    output.C_AVG_HL = runningitem.Value
+                Case Payload.PayloadFields.High
+                    output.High = runningitem.Value
+                Case Payload.PayloadFields.H_L
+                    output.H_L = runningitem.Value
+                Case Payload.PayloadFields.Low
+                    output.Low = runningitem.Value
+                Case Payload.PayloadFields.Open
+                    output.Open = runningitem.Value
+                Case Payload.PayloadFields.Volume
+                    output.Volume = runningitem.Value
+                Case Payload.PayloadFields.SMI_EMA
+                    output.SMI_EMA = runningitem.Value
+                Case Payload.PayloadFields.Additional_Field
+                    output.Additional_Field = runningitem.Value
+            End Select
+            outputpayload.Add(runningitem.Key, output)
+        Next
+        Return Nothing
+    End Function
+    Public Function ConvertDataTableToPayload(ByVal dt As DataTable,
+                                              ByVal openColumnIndex As Integer,
+                                              ByVal lowColumnIndex As Integer,
+                                              ByVal highColumnIndex As Integer,
+                                              ByVal closeColumnIndex As Integer,
+                                              ByVal volumeColumnIndex As Integer,
+                                              ByVal dateColumnIndex As Integer,
+                                              ByVal tradingSymbolColumnIndex As Integer) As Dictionary(Of Date, Payload)
+
+        Dim inputpayload As Dictionary(Of Date, Payload) = Nothing
+
+        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+            Dim i As Integer = 0
+            Dim cur_cum_vol As Long = Nothing
+            inputpayload = New Dictionary(Of Date, Payload)
+            Dim tempPreCandle As Payload = Nothing
+            While Not i = dt.Rows.Count()
+
+                Dim tempPayload As Payload
+                tempPayload = New Payload(Payload.CandleDataSource.Chart)
+                tempPayload.PreviousCandlePayload = tempPreCandle
+                tempPayload.Open = dt.Rows(i).Item(openColumnIndex)
+                tempPayload.Low = dt.Rows(i).Item(lowColumnIndex)
+                tempPayload.High = dt.Rows(i).Item(highColumnIndex)
+                tempPayload.Close = dt.Rows(i).Item(closeColumnIndex)
+                tempPayload.PayloadDate = dt.Rows(i).Item(dateColumnIndex)
+                tempPayload.TradingSymbol = dt.Rows(i).Item(tradingSymbolColumnIndex)
+                If tempPayload.PreviousCandlePayload IsNot Nothing Then
+                    If tempPayload.PayloadDate.Date = tempPayload.PreviousCandlePayload.PayloadDate.Date Then
+                        tempPayload.CumulativeVolume = tempPayload.PreviousCandlePayload.CumulativeVolume + dt.Rows(i).Item(volumeColumnIndex)
+                    Else
+                        tempPayload.CumulativeVolume = dt.Rows(i).Item(volumeColumnIndex)
+                    End If
+                Else
+                    tempPayload.CumulativeVolume = dt.Rows(i).Item(volumeColumnIndex)
+                End If
+                tempPreCandle = tempPayload
+                inputpayload.Add(dt.Rows(i).Item(dateColumnIndex), tempPayload)
+                i += 1
+            End While
+        End If
+
+        Return inputpayload
+
+    End Function
+    Public Function GetRawPayload(ByVal tableName As DataBaseTable, ByVal instrumentName As String, ByVal startDate As Date, ByVal endDate As Date) As Dictionary(Of Date, Payload)
+        Dim trade As String = Nothing
+        Dim dt As DataTable = Nothing
+        Dim inputpayload As Dictionary(Of Date, Payload) = Nothing
+        Dim conn As MySqlConnection = OpenDBConnection()
+        Dim cmd As MySqlCommand = Nothing
+        Dim cm As MySqlCommand = Nothing
+
+        Select Case tableName
+            Case DataBaseTable.Intraday_Cash
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CASH", conn)
+                Dim input As String = String.Format("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDateTime`,`TradingSymbol` FROM `intraday_prices_cash` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<='{0}' AND `SnapshotDate`>='{1}'", endDate.ToString("yyyy-MM-dd"), startDate.ToString("yyyy-MM-dd"))
+                cm = New MySqlCommand(input, conn)
+            Case DataBaseTable.Intraday_Currency
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CURRENCY", conn)
+                Dim input As String = String.Format("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDateTime`,`TradingSymbol` FROM `intraday_prices_currency` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<='{0}' AND `SnapshotDate`>='{1}'", endDate.ToString("yyyy-MM-dd"), startDate.ToString("yyyy-MM-dd"))
+                cm = New MySqlCommand(input, conn)
+            Case DataBaseTable.Intraday_Commodity
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_COMMODITY", conn)
+                Dim input As String = String.Format("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDateTime`,`TradingSymbol` FROM `intraday_prices_commodity` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<='{0}' AND `SnapshotDate`>='{1}'", endDate.ToString("yyyy-MM-dd"), startDate.ToString("yyyy-MM-dd"))
+                cm = New MySqlCommand(input, conn)
+            Case DataBaseTable.Intraday_Futures
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_FUTURE", conn)
+                Dim input As String = String.Format("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDateTime`,`TradingSymbol` FROM `intraday_prices_futures` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<='{0}' AND `SnapshotDate`>='{1}'", endDate.ToString("yyyy-MM-dd"), startDate.ToString("yyyy-MM-dd"))
+                cm = New MySqlCommand(input, conn)
+            Case DataBaseTable.EOD_Cash
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CASH", conn)
+                Dim input As String = String.Format("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDate`,`TradingSymbol` FROM `eod_prices_cash` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<='{0}' AND `SnapshotDate`>='{1}'", endDate.ToString("yyyy-MM-dd"), startDate.ToString("yyyy-MM-dd"))
+                cm = New MySqlCommand(input, conn)
+            Case DataBaseTable.EOD_Currency
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CURRENCY", conn)
+                Dim input As String = String.Format("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDate`,`TradingSymbol` FROM `eod_prices_currency` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<='{0}' AND `SnapshotDate`>='{1}'", endDate.ToString("yyyy-MM-dd"), startDate.ToString("yyyy-MM-dd"))
+                cm = New MySqlCommand(input, conn)
+            Case DataBaseTable.EOD_Commodity
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_COMMODITY", conn)
+                Dim input As String = String.Format("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDate`,`TradingSymbol` FROM `eod_prices_commodity` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<='{0}' AND `SnapshotDate`>='{1}'", endDate.ToString("yyyy-MM-dd"), startDate.ToString("yyyy-MM-dd"))
+                cm = New MySqlCommand(input, conn)
+            Case DataBaseTable.EOD_Futures
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_FUTURE", conn)
+                Dim input As String = String.Format("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDate`,`TradingSymbol` FROM `eod_prices_futures` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<='{0}' AND `SnapshotDate`>='{1}'", endDate.ToString("yyyy-MM-dd"), startDate.ToString("yyyy-MM-dd"))
+                cm = New MySqlCommand(input, conn)
+        End Select
+
+        OnHeartbeat(String.Format("Fetching required data from DataBase for {0} on {1}", instrumentName, endDate.ToShortDateString))
+
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("@userDate", endDate)
+        cmd.Parameters.AddWithValue("@allData", 0)
+        cmd.Parameters.AddWithValue("@tableName", "")
+        cmd.Parameters.AddWithValue("@instrumentName", instrumentName)
+        cmd.Parameters.Add("@currentTradingSymbol", MySqlDbType.VarChar, 100).Direction = ParameterDirection.Output
+        cmd.ExecuteNonQuery()
+        trade = cmd.Parameters(4).Value.ToString()
+
+        If trade IsNot Nothing Then
+            cm.Parameters.AddWithValue("@trd", trade)
+            Dim adapter As New MySqlDataAdapter(cm)
+            adapter.SelectCommand.CommandTimeout = 300
+            dt = New DataTable()
+            adapter.Fill(dt)
+            If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+                inputpayload = ConvertDataTableToPayload(dt, 0, 1, 2, 3, 4, 5, 6)
+            End If
+        End If
+        Return inputpayload
+    End Function
+    Public Function GetCurrentTradingSymbol(ByVal tableName As DataBaseTable, ByVal instrumentName As String, ByVal userDate As Date) As String
+        Dim trade As String = Nothing
+        Dim dt As DataTable = Nothing
+        Dim conn As MySqlConnection = OpenDBConnection()
+        Dim cmd As MySqlCommand = Nothing
+
+        Select Case tableName
+            Case DataBaseTable.Intraday_Cash
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CASH", conn)
+            Case DataBaseTable.Intraday_Currency
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CURRENCY", conn)
+            Case DataBaseTable.Intraday_Commodity
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_COMMODITY", conn)
+            Case DataBaseTable.Intraday_Futures
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_FUTURE", conn)
+            Case DataBaseTable.EOD_Cash
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CASH", conn)
+            Case DataBaseTable.EOD_Currency
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CURRENCY", conn)
+            Case DataBaseTable.EOD_Commodity
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_COMMODITY", conn)
+            Case DataBaseTable.EOD_Futures
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_FUTURE", conn)
+        End Select
+
+        OnHeartbeat(String.Format("Fetching Trading Symbol for {0} on {1}", instrumentName, userDate.ToShortDateString))
+
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("@userDate", userDate)
+        cmd.Parameters.AddWithValue("@allData", 0)
+        cmd.Parameters.AddWithValue("@tableName", "")
+        cmd.Parameters.AddWithValue("@instrumentName", instrumentName)
+        cmd.Parameters.Add("@currentTradingSymbol", MySqlDbType.VarChar, 100).Direction = ParameterDirection.Output
+        cmd.ExecuteNonQuery()
+        trade = cmd.Parameters(4).Value.ToString()
+
+        Return trade
+    End Function
+    Public Function GetRawPayloadForSpecificTradingSymbol(ByVal tableName As DataBaseTable, ByVal tradingSymbol As String, ByVal startDate As Date, ByVal endDate As Date) As Dictionary(Of Date, Payload)
+        Dim trade As String = Nothing
+        Dim dt As DataTable = Nothing
+        Dim inputpayload As Dictionary(Of Date, Payload) = Nothing
+        Dim conn As MySqlConnection = OpenDBConnection()
+        Dim cm As MySqlCommand = Nothing
+
+        Select Case tableName
+            Case DataBaseTable.Intraday_Cash
+                cm = New MySqlCommand("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDateTime`,`TradingSymbol` FROM `intraday_prices_cash` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<=@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.Intraday_Currency
+                cm = New MySqlCommand("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDateTime`,`TradingSymbol` FROM `intraday_prices_currency` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<=@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.Intraday_Commodity
+                cm = New MySqlCommand("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDateTime`,`TradingSymbol` FROM `intraday_prices_commodity` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<=@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.Intraday_Futures
+                cm = New MySqlCommand("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDateTime`,`TradingSymbol` FROM `intraday_prices_futures` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<=@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Cash
+                cm = New MySqlCommand("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDate`,`TradingSymbol` FROM `eod_prices_cash` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<=@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Currency
+                cm = New MySqlCommand("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDate`,`TradingSymbol` FROM `eod_prices_currency` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<=@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Commodity
+                cm = New MySqlCommand("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDate`,`TradingSymbol` FROM `eod_prices_commodity` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<=@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Futures
+                cm = New MySqlCommand("SELECT `Open`,`Low`,`High`,`Close`,`Volume`,`SnapshotDate`,`TradingSymbol` FROM `eod_prices_futures` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<=@ed AND `SnapshotDate`>=@sd", conn)
+        End Select
+
+        OnHeartbeat(String.Format("Fetching required data from DataBase for {0}", tradingSymbol))
+
+        trade = tradingSymbol
+
+        If trade IsNot Nothing Then
+            cm.Parameters.AddWithValue("@trd", trade)
+            cm.Parameters.AddWithValue("@ed", endDate)
+            cm.Parameters.AddWithValue("@sd", startDate)
+            Dim adapter As New MySqlDataAdapter(cm)
+            adapter.SelectCommand.CommandTimeout = 300
+            dt = New DataTable()
+            adapter.Fill(dt)
+            If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+                inputpayload = ConvertDataTableToPayload(dt, 0, 1, 2, 3, 4, 5, 6)
+            End If
+        End If
+        Return inputpayload
+    End Function
+    Public Function GetPreviousTradingDay(ByVal tableName As DataBaseTable, ByVal instrumentName As String, ByVal currentDate As Date) As Date
+        Dim trade As String = Nothing
+        Dim dt As DataTable = Nothing
+        Dim previousTradingDate As Date = Nothing
+        Dim conn As MySqlConnection = OpenDBConnection()
+        Dim cmd As MySqlCommand = Nothing
+        Dim cm As MySqlCommand = Nothing
+
+        Select Case tableName
+            Case DataBaseTable.Intraday_Cash
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CASH", conn)
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `intraday_prices_cash` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.Intraday_Currency
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CURRENCY", conn)
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `intraday_prices_currency` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.Intraday_Commodity
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_COMMODITY", conn)
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `intraday_prices_commodity` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.Intraday_Futures
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_FUTURE", conn)
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `intraday_prices_futures` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Cash
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CASH", conn)
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `eod_prices_cash` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Currency
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_CURRENCY", conn)
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `eod_prices_currency` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Commodity
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_COMMODITY", conn)
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `eod_prices_commodity` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Futures
+                cmd = New MySqlCommand("CURRENT_TRADINGSYMBOL_FUTURE", conn)
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `eod_prices_futures` WHERE `TradingSymbol`=@trd AND `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+        End Select
+
+        OnHeartbeat(String.Format("Fetching required data from DataBase for {0} on {1}", instrumentName, currentDate.ToShortDateString))
+
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("@userDate", currentDate)
+        cmd.Parameters.AddWithValue("@allData", 0)
+        cmd.Parameters.AddWithValue("@tableName", "")
+        cmd.Parameters.AddWithValue("@instrumentName", instrumentName)
+        cmd.Parameters.Add("@currentTradingSymbol", MySqlDbType.VarChar, 100).Direction = ParameterDirection.Output
+        cmd.ExecuteNonQuery()
+        trade = cmd.Parameters(4).Value.ToString()
+
+        If trade IsNot Nothing Then
+            cm.Parameters.AddWithValue("@trd", trade)
+            cm.Parameters.AddWithValue("@ed", currentDate)
+            cm.Parameters.AddWithValue("@sd", currentDate.AddDays(-15))
+            Dim adapter As New MySqlDataAdapter(cm)
+            adapter.SelectCommand.CommandTimeout = 300
+            dt = New DataTable()
+            adapter.Fill(dt)
+            If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+                previousTradingDate = dt.Rows(0).Item(0)
+            End If
+        End If
+        Return previousTradingDate
+    End Function
+    Public Function GetPreviousTradingDay(ByVal tableName As DataBaseTable, ByVal currentDate As Date) As Date
+        Dim dt As DataTable = Nothing
+        Dim previousTradingDate As Date = Nothing
+        Dim conn As MySqlConnection = OpenDBConnection()
+        Dim cm As MySqlCommand = Nothing
+
+        Select Case tableName
+            Case DataBaseTable.Intraday_Cash
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `intraday_prices_cash` WHERE `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.Intraday_Currency
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `intraday_prices_currency` WHERE `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.Intraday_Commodity
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `intraday_prices_commodity` WHERE `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.Intraday_Futures
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `intraday_prices_futures` WHERE `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Cash
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `eod_prices_cash` WHERE `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Currency
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `eod_prices_currency` WHERE `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Commodity
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `eod_prices_commodity` WHERE `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+            Case DataBaseTable.EOD_Futures
+                cm = New MySqlCommand("SELECT MAX(`SnapshotDate`) FROM `eod_prices_futures` WHERE `SnapshotDate`<@ed AND `SnapshotDate`>=@sd", conn)
+        End Select
+
+        OnHeartbeat(String.Format("Fetching Previous Trading Date from DataBase for {0}", currentDate.ToShortDateString))
+
+        cm.Parameters.AddWithValue("@ed", currentDate)
+        cm.Parameters.AddWithValue("@sd", currentDate.AddDays(-15))
+        Dim adapter As New MySqlDataAdapter(cm)
+        adapter.SelectCommand.CommandTimeout = 300
+        dt = New DataTable()
+        adapter.Fill(dt)
+        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+            previousTradingDate = dt.Rows(0).Item(0)
+        End If
+
+        Return previousTradingDate
+    End Function
+    Public Function CalculateStandardDeviation(ByVal inputPayload As Dictionary(Of Date, Decimal)) As Double
+        Dim ret As Double = Nothing
+        If inputPayload IsNot Nothing AndAlso inputPayload.Count > 0 Then
+            Dim sum As Double = 0
+            For Each runningPayload In inputPayload.Keys
+                sum = sum + inputPayload(runningPayload)
+            Next
+            Dim mean As Double = sum / inputPayload.Count
+            Dim sumVariance As Double = 0
+            For Each runningPayload In inputPayload.Keys
+                sumVariance = sumVariance + Math.Pow((inputPayload(runningPayload) - mean), 2)
+            Next
+            Dim sampleVariance As Double = sumVariance / (inputPayload.Count - 1)
+            Dim standardDeviation As Double = Math.Sqrt(sampleVariance)
+            ret = standardDeviation
+        End If
+        Return Math.Round(ret, 4)
+    End Function
+    Public Function CalculateStandardDeviation(ParamArray numbers() As Double) As Double
+        Dim ret As Double = Nothing
+        If numbers.Count > 0 Then
+            Dim sum As Double = 0
+            For i = 0 To numbers.Count - 1
+                sum = sum + numbers(i)
+            Next
+            Dim mean As Double = sum / numbers.Count
+            Dim sumVariance As Double = 0
+            For j = 0 To numbers.Count - 1
+                sumVariance = sumVariance + Math.Pow((numbers(j) - mean), 2)
+            Next
+            Dim sampleVariance As Double = sumVariance / (numbers.Count - 1)
+            Dim standardDeviation As Double = Math.Sqrt(sampleVariance)
+            ret = standardDeviation
+        End If
+        Return Math.Round(ret, 4)
+    End Function
+    Public Function CalculateStandardDeviationPA(ByVal inputPayload As Dictionary(Of Date, Decimal)) As Double
+        Dim ret As Double = Nothing
+        If inputPayload IsNot Nothing AndAlso inputPayload.Count > 0 Then
+            Dim sum As Double = 0
+            For Each runningPayload In inputPayload.Keys
+                sum = sum + inputPayload(runningPayload)
+            Next
+            Dim mean As Double = sum / inputPayload.Count
+            Dim sumVariance As Double = 0
+            For Each runningPayload In inputPayload.Keys
+                sumVariance = sumVariance + Math.Pow((inputPayload(runningPayload) - mean), 2)
+            Next
+            Dim sampleVariance As Double = sumVariance / (inputPayload.Count - 1)
+            Dim standardDeviation As Double = Math.Sqrt(sampleVariance)
+            ret = standardDeviation
+        End If
+        Return Math.Round(ret, 4)
+    End Function
+#End Region
+
+#Region "DB Connection"
+    Public Function OpenDBConnection() As MySqlConnection
+        If conn Is Nothing OrElse conn.State <> ConnectionState.Open Then
+            OnHeartbeat("Connecting Database")
+            Try
+                conn = New MySqlConnection(My.Settings.dbConnectionLocal)
+                conn.Open()
+            Catch mex1 As MySqlException
+                Try
+                    conn = New MySqlConnection(My.Settings.dbConnectionLocalNetwork)
+                    conn.Open()
+                Catch mex2 As MySqlException
+                    conn = New MySqlConnection(My.Settings.dbConnectionRemote)
+                    conn.Open()
+                End Try
+            End Try
+        End If
+        Return conn
+    End Function
+#End Region
+
+#Region "IDisposable Support"
+    Private disposedValue As Boolean ' To detect redundant calls
+
+    ' IDisposable
+    Protected Overridable Sub Dispose(disposing As Boolean)
+        If Not disposedValue Then
+            If disposing Then
+                ' TODO: dispose managed state (managed objects).
+            End If
+
+            ' TODO: free unmanaged resources (unmanaged objects) and override Finalize() below.
+            ' TODO: set large fields to null.
+        End If
+        disposedValue = True
+    End Sub
+
+    ' TODO: override Finalize() only if Dispose(disposing As Boolean) above has code to free unmanaged resources.
+    'Protected Overrides Sub Finalize()
+    '    ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
+    '    Dispose(False)
+    '    MyBase.Finalize()
+    'End Sub
+
+    ' This code added by Visual Basic to correctly implement the disposable pattern.
+    Public Sub Dispose() Implements IDisposable.Dispose
+        ' Do not change this code.  Put cleanup code in Dispose(disposing As Boolean) above.
+        Dispose(True)
+        ' TODO: uncomment the following line if Finalize() is overridden above.
+        ' GC.SuppressFinalize(Me)
+    End Sub
+#End Region
+End Class
