@@ -15,6 +15,8 @@ Public Class GetRawCandle
         ret.Columns.Add("High")
         ret.Columns.Add("Close")
         ret.Columns.Add("Volume")
+        ret.Columns.Add("High Fractal")
+        ret.Columns.Add("Low Fractal")
         Dim stockData As StockSelection = New StockSelection(_canceller, _category, _name)
         AddHandler stockData.Heartbeat, AddressOf OnHeartbeat
         AddHandler stockData.WaitingFor, AddressOf OnWaitingFor
@@ -72,6 +74,9 @@ Public Class GetRawCandle
                             End If
                         Next
                         'Main Logic
+                        Dim highFractalPayload As Dictionary(Of Date, Decimal) = Nothing
+                        Dim lowFractalPayload As Dictionary(Of Date, Decimal) = Nothing
+                        Indicator.FractalBands.CalculateFractal(inputPayload, highFractalPayload, lowFractalPayload)
                         If currentDayPayload IsNot Nothing AndAlso currentDayPayload.Count > 0 Then
                             For Each runningPayload In currentDayPayload.Keys
                                 _canceller.Token.ThrowIfCancellationRequested()
@@ -83,6 +88,8 @@ Public Class GetRawCandle
                                 row("High") = currentDayPayload(runningPayload).High
                                 row("Close") = currentDayPayload(runningPayload).Close
                                 row("Volume") = currentDayPayload(runningPayload).Volume
+                                row("High Fractal") = highFractalPayload(runningPayload)
+                                row("Low Fractal") = lowFractalPayload(runningPayload)
                                 ret.Rows.Add(row)
                             Next
                         End If
