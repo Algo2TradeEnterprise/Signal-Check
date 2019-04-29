@@ -46,7 +46,7 @@ Public Class Common
 #End Region
 
 #Region "Public Methods"
-    Public Function GetPayloadAtPositionOrPositionMinus1(ByVal beforeThisTime As DateTime, ByVal inputPayload As Dictionary(Of Date, Decimal)) As KeyValuePair(Of DateTime, Decimal)
+    Public Shared Function GetPayloadAtPositionOrPositionMinus1(ByVal beforeThisTime As DateTime, ByVal inputPayload As Dictionary(Of Date, Decimal)) As KeyValuePair(Of DateTime, Decimal)
         Dim ret As KeyValuePair(Of DateTime, Decimal) = Nothing
         If inputPayload IsNot Nothing Then
             Dim tempret = inputPayload.Where(Function(x)
@@ -58,7 +58,7 @@ Public Class Common
         End If
         Return ret
     End Function
-    Public Function GetSubPayload(ByVal inputPayload As Dictionary(Of Date, Decimal),
+    Public Shared Function GetSubPayload(ByVal inputPayload As Dictionary(Of Date, Decimal),
                                      ByVal beforeThisTime As DateTime,
                                       ByVal numberOfItemsToRetrive As Integer,
                                       ByVal includeTimePassedAsOneOftheItems As Boolean) As List(Of KeyValuePair(Of DateTime, Decimal))
@@ -88,7 +88,7 @@ Public Class Common
         End If
         Return ret
     End Function
-    Public Function GetSubPayload(ByVal inputPayload As Dictionary(Of Date, Payload),
+    Public Shared Function GetSubPayload(ByVal inputPayload As Dictionary(Of Date, Payload),
                                      ByVal beforeThisTime As DateTime,
                                       ByVal numberOfItemsToRetrive As Integer,
                                       ByVal includeTimePassedAsOneOftheItems As Boolean) As List(Of KeyValuePair(Of DateTime, Payload))
@@ -540,7 +540,7 @@ Public Class Common
             For Each runningPayload In inputPayload.Keys
                 sumVariance = sumVariance + Math.Pow((inputPayload(runningPayload) - mean), 2)
             Next
-            Dim sampleVariance As Double = sumVariance / (inputPayload.Count - 1)
+            Dim sampleVariance As Double = sumVariance / (inputPayload.Count)
             Dim standardDeviation As Double = Math.Sqrt(sampleVariance)
             ret = standardDeviation
         End If

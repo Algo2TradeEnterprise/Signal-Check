@@ -14,7 +14,7 @@ Namespace Indicator
                     Dim highBand As Decimal = Nothing
                     Dim lowBand As Decimal = Nothing
                     Dim sd As Decimal = Nothing
-                    Dim previousNInputFieldPayload As List(Of KeyValuePair(Of Date, Payload)) = cmn.GetSubPayload(inputPayload,
+                    Dim previousNInputFieldPayload As List(Of KeyValuePair(Of Date, Payload)) = Common.GetSubPayload(inputPayload,
                                                                                                                        runningPayload,
                                                                                                                         period,
                                                                                                                         True)
