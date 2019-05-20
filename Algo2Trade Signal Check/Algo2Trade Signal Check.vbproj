@@ -115,6 +115,7 @@
     <Compile Include="StrategyRules\HKTemporaryPause.vb" />
     <Compile Include="StrategyRules\HKTrendOpposingByVolume.vb" />
     <Compile Include="StrategyRules\LowLossHighGainVWAP.vb" />
+    <Compile Include="StrategyRules\MarketOpenHABreakoutScreener.vb" />
     <Compile Include="StrategyRules\OneSidedVolume.vb" />
     <Compile Include="StrategyRules\PiercingAndDarkCloud.vb" />
     <Compile Include="Rule.vb" />

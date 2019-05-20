@@ -56,7 +56,7 @@ Public Class StockSelection
                     cmd.Parameters.AddWithValue("@minClose", 100)
                     cmd.Parameters.AddWithValue("@maxClose", 1500)
                     cmd.Parameters.AddWithValue("@atrPercentage", 2.5)
-                    cmd.Parameters.AddWithValue("@potentialAmount", 1000000)
+                    cmd.Parameters.AddWithValue("@potentialAmount", 500000)
                     'OnHeartbeat("Fetching Top Gainer Looser Data")
                     'Dim cmd As New MySqlCommand("GET_TOP_GAINER_LOOSER_DATA_ATR_VOLUME_ALL_DATES", conn)
                     'cmd.CommandType = CommandType.StoredProcedure
@@ -98,7 +98,7 @@ Public Class StockSelection
                     cmd.Parameters.AddWithValue("@minClose", 100)
                     cmd.Parameters.AddWithValue("@maxClose", 1500)
                     cmd.Parameters.AddWithValue("@atrPercentage", 2.5)
-                    cmd.Parameters.AddWithValue("@potentialAmount", 1000000)
+                    cmd.Parameters.AddWithValue("@potentialAmount", 500000)
 
                     Dim adapter As New MySqlDataAdapter(cmd)
                     adapter.SelectCommand.CommandTimeout = 3000

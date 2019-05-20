@@ -301,6 +301,8 @@ Public Class frmMain
                 rule = New DonchianBreakoutShortTrend(_canceller, category, name, timeFrame, useHA)
             Case 18
                 rule = New PinocchioBarFormation(_canceller, category, name, timeFrame, useHA)
+            Case 19
+                rule = New MarketOpenHABreakoutScreener(_canceller, category, name, timeFrame, useHA)
         End Select
         AddHandler Rule.Heartbeat, AddressOf OnHeartbeat
         AddHandler Rule.WaitingFor, AddressOf OnWaitingFor

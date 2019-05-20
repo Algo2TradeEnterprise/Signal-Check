@@ -1,6 +1,7 @@
 ﻿Imports Algo2TradeBLL
 Imports System.Threading
-Public Class GetRawCandle
+
+Public Class MarketOpenHABreakoutScreener
     Inherits Rule
     Public Sub New(ByVal canceller As CancellationTokenSource, ByVal stockCategory As String, ByVal stockName As String, ByVal timeFrame As Integer, ByVal useHA As Boolean)
         MyBase.New(canceller, stockCategory, stockName, timeFrame, useHA)
@@ -33,8 +34,10 @@ Public Class GetRawCandle
             End If
             _canceller.Token.ThrowIfCancellationRequested()
             If stockList IsNot Nothing AndAlso stockList.Count > 0 Then
+                Dim counter As Integer = 0
                 For Each stock In stockList
                     _canceller.Token.ThrowIfCancellationRequested()
+                    counter += 1
                     Dim stockPayload As Dictionary(Of Date, Payload) = Nothing
                     Select Case _category
                         Case "Cash"
@@ -49,6 +52,7 @@ Public Class GetRawCandle
                             Throw New NotImplementedException
                     End Select
                     _canceller.Token.ThrowIfCancellationRequested()
+                    OnHeartbeat(String.Format("Processing for {0} ({1}/{2})", stock, counter, stockList.Count))
                     If stockPayload IsNot Nothing AndAlso stockPayload.Count > 0 Then
                         Dim XMinutePayload As Dictionary(Of Date, Payload) = Nothing
                         If _timeFrame > 1 Then
@@ -73,43 +77,37 @@ Public Class GetRawCandle
                             End If
                         Next
                         'Main Logic
-                        'Dim diPlusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim diMinusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim ADXPayload As Dictionary(Of Date, Decimal) = Nothing
-
-                        'Dim trPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dm1PlusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dm1MinusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dxPayload As Dictionary(Of Date, Decimal) = Nothing
-
-                        'Dim tr14Payload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dm14PlusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dm14MinusPayload As Dictionary(Of Date, Decimal) = Nothing
-
-                        'Indicator.ADX.CalculateADX(14, 14, inputPayload, ADXPayload, diPlusPayload, diMinusPayload, trPayload, dm1PlusPayload, dm1MinusPayload, dxPayload, tr14Payload, dm14PlusPayload, dm14MinusPayload)
                         If currentDayPayload IsNot Nothing AndAlso currentDayPayload.Count > 0 Then
+                            Dim firstCandle As Boolean = True
                             For Each runningPayload In currentDayPayload.Keys
                                 _canceller.Token.ThrowIfCancellationRequested()
-                                Dim row As DataRow = ret.NewRow
-                                row("Date") = inputPayload(runningPayload).PayloadDate
-                                row("Trading Symbol") = inputPayload(runningPayload).TradingSymbol
-                                row("Open") = inputPayload(runningPayload).Open
-                                row("Low") = inputPayload(runningPayload).Low
-                                row("High") = inputPayload(runningPayload).High
-                                row("Close") = inputPayload(runningPayload).Close
-                                row("Volume") = inputPayload(runningPayload).Volume
-
-                                'row("TR1") = trPayload(runningPayload)
-                                'row("DM1+") = dm1PlusPayload(runningPayload)
-                                'row("DM1-") = dm1MinusPayload(runningPayload)
-                                'row("TR14") = tr14Payload(runningPayload)
-                                'row("DM14+") = dm14PlusPayload(runningPayload)
-                                'row("DM14-") = dm14MinusPayload(runningPayload)
-                                'row("DX") = dxPayload(runningPayload)
-                                'row("DI+") = diPlusPayload(runningPayload)
-                                'row("DI-") = diMinusPayload(runningPayload)
-                                'row("ADX") = ADXPayload(runningPayload)
-                                ret.Rows.Add(row)
+                                If Not firstCandle Then
+                                    If currentDayPayload(runningPayload).PreviousCandlePayload.CandleColor = Color.Green AndAlso
+                                        currentDayPayload(runningPayload).Low < currentDayPayload(runningPayload).PreviousCandlePayload.Low Then
+                                        Dim row As DataRow = ret.NewRow
+                                        row("Date") = currentDayPayload(runningPayload).PayloadDate
+                                        row("Trading Symbol") = currentDayPayload(runningPayload).TradingSymbol
+                                        row("Open") = currentDayPayload(runningPayload).Open
+                                        row("Low") = currentDayPayload(runningPayload).Low
+                                        row("High") = currentDayPayload(runningPayload).High
+                                        row("Close") = currentDayPayload(runningPayload).Close
+                                        row("Volume") = currentDayPayload(runningPayload).Volume
+                                        ret.Rows.Add(row)
+                                    ElseIf currentDayPayload(runningPayload).PreviousCandlePayload.CandleColor = Color.Red AndAlso
+                                        currentDayPayload(runningPayload).High > currentDayPayload(runningPayload).PreviousCandlePayload.High Then
+                                        Dim row As DataRow = ret.NewRow
+                                        row("Date") = currentDayPayload(runningPayload).PayloadDate
+                                        row("Trading Symbol") = currentDayPayload(runningPayload).TradingSymbol
+                                        row("Open") = currentDayPayload(runningPayload).Open
+                                        row("Low") = currentDayPayload(runningPayload).Low
+                                        row("High") = currentDayPayload(runningPayload).High
+                                        row("Close") = currentDayPayload(runningPayload).Close
+                                        row("Volume") = currentDayPayload(runningPayload).Volume
+                                        ret.Rows.Add(row)
+                                    End If
+                                    Exit For
+                                End If
+                                firstCandle = False
                             Next
                         End If
                     End If
