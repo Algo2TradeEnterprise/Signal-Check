@@ -15,6 +15,8 @@ Public Class GetRawCandle
         ret.Columns.Add("High")
         ret.Columns.Add("Close")
         ret.Columns.Add("Volume")
+        ret.Columns.Add("PSAR")
+        ret.Columns.Add("Trend")
 
         Dim stockData As StockSelection = New StockSelection(_canceller, _category, _name)
         AddHandler stockData.Heartbeat, AddressOf OnHeartbeat
@@ -73,20 +75,11 @@ Public Class GetRawCandle
                             End If
                         Next
                         'Main Logic
-                        'Dim diPlusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim diMinusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim ADXPayload As Dictionary(Of Date, Decimal) = Nothing
 
-                        'Dim trPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dm1PlusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dm1MinusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dxPayload As Dictionary(Of Date, Decimal) = Nothing
+                        Dim psarPayload As Dictionary(Of Date, Decimal) = Nothing
+                        Dim trendPayload As Dictionary(Of Date, Color) = Nothing
 
-                        'Dim tr14Payload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dm14PlusPayload As Dictionary(Of Date, Decimal) = Nothing
-                        'Dim dm14MinusPayload As Dictionary(Of Date, Decimal) = Nothing
-
-                        'Indicator.ADX.CalculateADX(14, 14, inputPayload, ADXPayload, diPlusPayload, diMinusPayload, trPayload, dm1PlusPayload, dm1MinusPayload, dxPayload, tr14Payload, dm14PlusPayload, dm14MinusPayload)
+                        Indicator.ParabolicSAR.CalculatePSAR(0.02, 0.2, inputPayload, psarPayload, trendPayload)
                         If currentDayPayload IsNot Nothing AndAlso currentDayPayload.Count > 0 Then
                             For Each runningPayload In currentDayPayload.Keys
                                 _canceller.Token.ThrowIfCancellationRequested()
@@ -98,17 +91,9 @@ Public Class GetRawCandle
                                 row("High") = inputPayload(runningPayload).High
                                 row("Close") = inputPayload(runningPayload).Close
                                 row("Volume") = inputPayload(runningPayload).Volume
+                                row("PSAR") = psarPayload(runningPayload)
+                                row("Trend") = trendPayload(runningPayload).ToString
 
-                                'row("TR1") = trPayload(runningPayload)
-                                'row("DM1+") = dm1PlusPayload(runningPayload)
-                                'row("DM1-") = dm1MinusPayload(runningPayload)
-                                'row("TR14") = tr14Payload(runningPayload)
-                                'row("DM14+") = dm14PlusPayload(runningPayload)
-                                'row("DM14-") = dm14MinusPayload(runningPayload)
-                                'row("DX") = dxPayload(runningPayload)
-                                'row("DI+") = diPlusPayload(runningPayload)
-                                'row("DI-") = diMinusPayload(runningPayload)
-                                'row("ADX") = ADXPayload(runningPayload)
                                 ret.Rows.Add(row)
                             Next
                         End If
