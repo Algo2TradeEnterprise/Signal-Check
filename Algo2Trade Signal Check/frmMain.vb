@@ -245,7 +245,7 @@ Public Class frmMain
         Catch ox As OperationCanceledException
             MsgBox(String.Format("Error: {0}", ox.Message), MsgBoxStyle.Critical)
         Catch ex As Exception
-            MsgBox(String.Format("Error: {0}", ex.Message), MsgBoxStyle.Critical)
+            MsgBox(String.Format("Error: {0}", ex.ToString), MsgBoxStyle.Critical)
         Finally
             SetLabelText_ThreadSafe(lblProgress, "Process Complete")
             InitUI(True)

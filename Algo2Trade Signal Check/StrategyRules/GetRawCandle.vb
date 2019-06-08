@@ -81,7 +81,9 @@ Public Class GetRawCandle
                         Dim swingLowPayload As Dictionary(Of Date, Decimal) = Nothing
                         Dim vwapSwingHighPayload As Dictionary(Of Date, Decimal) = Nothing
                         Dim vwapSwingLowPayload As Dictionary(Of Date, Decimal) = Nothing
-                        Indicator.SwingHighLowWithVWAP.CalculateSwingHighLowWithVWAP(inputPayload, False, swingHighPayload, swingLowPayload, vwapSwingHighPayload, vwapSwingLowPayload)
+                        Dim vwapSwingHighCandlePayload As Dictionary(Of Date, Date) = Nothing
+                        Dim vwapSwingLowCandlePayload As Dictionary(Of Date, Date) = Nothing
+                        Indicator.SwingHighLowWithVWAP.CalculateSwingHighLowWithVWAP(inputPayload, False, swingHighPayload, swingLowPayload, vwapSwingHighPayload, vwapSwingLowPayload, vwapSwingHighCandlePayload, vwapSwingLowCandlePayload)
 
                         If currentDayPayload IsNot Nothing AndAlso currentDayPayload.Count > 0 Then
                             For Each runningPayload In currentDayPayload.Keys
