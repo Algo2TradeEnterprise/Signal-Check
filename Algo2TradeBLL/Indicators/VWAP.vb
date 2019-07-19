@@ -19,7 +19,7 @@ Namespace Indicator
                     avgPrice = (runningInputPayload.Value.High + runningInputPayload.Value.Low + runningInputPayload.Value.Close) / 3
                     avgPriceStarVolume = avgPrice * runningInputPayload.Value.Volume
                     cumAvgPriceStarVolume += avgPriceStarVolume
-                    finalPriceToBeAdded = Math.Round((cumAvgPriceStarVolume / runningInputPayload.Value.CumulativeVolume), 2)
+                    finalPriceToBeAdded = cumAvgPriceStarVolume / runningInputPayload.Value.CumulativeVolume
                     If outputPayload Is Nothing Then outputPayload = New Dictionary(Of Date, Decimal)
                     outputPayload.Add(runningInputPayload.Key, finalPriceToBeAdded)
                 Next

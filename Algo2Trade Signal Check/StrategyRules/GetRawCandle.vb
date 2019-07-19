@@ -15,10 +15,6 @@ Public Class GetRawCandle
         ret.Columns.Add("High")
         ret.Columns.Add("Close")
         ret.Columns.Add("Volume")
-        ret.Columns.Add("Swing High")
-        ret.Columns.Add("Swing Low")
-        ret.Columns.Add("VWAP Swing High")
-        ret.Columns.Add("VWAP Swing Low")
 
         Dim stockData As StockSelection = New StockSelection(_canceller, _category, _name)
         AddHandler stockData.Heartbeat, AddressOf OnHeartbeat
@@ -76,16 +72,10 @@ Public Class GetRawCandle
                                 currentDayPayload.Add(runningPayload, inputPayload(runningPayload))
                             End If
                         Next
-                        'Main Logic
-                        Dim swingHighPayload As Dictionary(Of Date, Decimal) = Nothing
-                        Dim swingLowPayload As Dictionary(Of Date, Decimal) = Nothing
-                        Dim vwapSwingHighPayload As Dictionary(Of Date, Decimal) = Nothing
-                        Dim vwapSwingLowPayload As Dictionary(Of Date, Decimal) = Nothing
-                        Dim vwapSwingHighCandlePayload As Dictionary(Of Date, Date) = Nothing
-                        Dim vwapSwingLowCandlePayload As Dictionary(Of Date, Date) = Nothing
-                        Indicator.SwingHighLowWithVWAP.CalculateSwingHighLowWithVWAP(inputPayload, False, swingHighPayload, swingLowPayload, vwapSwingHighPayload, vwapSwingLowPayload, vwapSwingHighCandlePayload, vwapSwingLowCandlePayload)
 
-                        If currentDayPayload IsNot Nothing AndAlso currentDayPayload.Count > 0 Then
+                        'Main Logic
+                        Dim volumeFilterSatisfied As Boolean = _common.PassedVolumeFilter(inputPayload.LastOrDefault.Value.TradingSymbol, chkDate, 20)
+                        If volumeFilterSatisfied AndAlso currentDayPayload IsNot Nothing AndAlso currentDayPayload.Count > 0 Then
                             For Each runningPayload In currentDayPayload.Keys
                                 _canceller.Token.ThrowIfCancellationRequested()
                                 Dim row As DataRow = ret.NewRow
@@ -96,10 +86,6 @@ Public Class GetRawCandle
                                 row("High") = inputPayload(runningPayload).High
                                 row("Close") = inputPayload(runningPayload).Close
                                 row("Volume") = inputPayload(runningPayload).Volume
-                                row("Swing High") = swingHighPayload(runningPayload)
-                                row("Swing Low") = swingLowPayload(runningPayload)
-                                row("VWAP Swing High") = vwapSwingHighPayload(runningPayload)
-                                row("VWAP Swing Low") = vwapSwingLowPayload(runningPayload)
 
                                 ret.Rows.Add(row)
                             Next

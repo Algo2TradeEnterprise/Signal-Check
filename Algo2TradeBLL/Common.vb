@@ -492,6 +492,7 @@ Public Class Common
 
         Return previousTradingDate
     End Function
+
     Public Function CalculateStandardDeviation(ByVal inputPayload As Dictionary(Of Date, Decimal)) As Double
         Dim ret As Double = Nothing
         If inputPayload IsNot Nothing AndAlso inputPayload.Count > 0 Then
@@ -545,6 +546,124 @@ Public Class Common
             ret = standardDeviation
         End If
         Return Math.Round(ret, 4)
+    End Function
+    Public Function GetLotSize(ByVal tableName As DataBaseTable, ByVal tradingSymbol As String, ByVal currentDate As Date) As Integer
+        Dim ret As Integer = 0
+        Dim dt As DataTable = Nothing
+        Dim conn As MySqlConnection = OpenDBConnection()
+        Dim cm As MySqlCommand = Nothing
+
+        Select Case tableName
+            Case DataBaseTable.Intraday_Cash
+                cm = New MySqlCommand("SELECT `LOT_SIZE` FROM `active_instruments_cash` WHERE `TRADING_SYMBOL`=@trd AND `AS_ON_DATE`=@sd", conn)
+            Case DataBaseTable.Intraday_Currency
+                cm = New MySqlCommand("SELECT `LOT_SIZE` FROM `active_instruments_currency` WHERE `TRADING_SYMBOL`=@trd AND `AS_ON_DATE`=@sd", conn)
+            Case DataBaseTable.Intraday_Commodity
+                cm = New MySqlCommand("SELECT `LOT_SIZE` FROM `active_instruments_commodity` WHERE `TRADING_SYMBOL`=@trd AND `AS_ON_DATE`=@sd", conn)
+            Case DataBaseTable.Intraday_Futures
+                cm = New MySqlCommand("SELECT `LOT_SIZE` FROM `active_instruments_futures` WHERE `TRADING_SYMBOL`=@trd AND `AS_ON_DATE`=@sd", conn)
+            Case DataBaseTable.EOD_Cash
+                cm = New MySqlCommand("SELECT `LOT_SIZE` FROM `active_instruments_cash` WHERE `TRADING_SYMBOL`=@trd AND `AS_ON_DATE`=@sd", conn)
+            Case DataBaseTable.EOD_Currency
+                cm = New MySqlCommand("SELECT `LOT_SIZE` FROM `active_instruments_currency` WHERE `TRADING_SYMBOL`=@trd AND `AS_ON_DATE`=@sd", conn)
+            Case DataBaseTable.EOD_Commodity
+                cm = New MySqlCommand("SELECT `LOT_SIZE` FROM `active_instruments_commodity` WHERE `TRADING_SYMBOL`=@trd AND `AS_ON_DATE`=@sd", conn)
+            Case DataBaseTable.EOD_Futures
+                cm = New MySqlCommand("SELECT `LOT_SIZE` FROM `active_instruments_futures` WHERE `TRADING_SYMBOL`=@trd AND `AS_ON_DATE`=@sd", conn)
+        End Select
+
+        OnHeartbeat(String.Format("Fetching required data from DataBase for {0} on {1}", tradingSymbol, currentDate.ToShortDateString))
+
+        If tradingSymbol IsNot Nothing Then
+            cm.Parameters.AddWithValue("@trd", tradingSymbol)
+            cm.Parameters.AddWithValue("@sd", currentDate.ToString("yyyy-MM-dd"))
+            Dim adapter As New MySqlDataAdapter(cm)
+            adapter.SelectCommand.CommandTimeout = 300
+            dt = New DataTable()
+            adapter.Fill(dt)
+            If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+                ret = dt.Rows(0).Item(0)
+            End If
+        End If
+        Return ret
+    End Function
+    Public Function PassedVolumeFilter(ByVal tradingSymbol As String, ByVal tradingDate As Date, ByVal maximumBenchmark As Decimal) As Boolean
+        Dim ret As Boolean = False
+        Dim instrumentName As String = Nothing
+        If tradingSymbol IsNot Nothing AndAlso tradingSymbol.Contains("FUT") Then
+            instrumentName = tradingSymbol.Remove(tradingSymbol.Count - 8)
+        Else
+            Throw New ApplicationException(String.Format("{0} is a future instrument", tradingSymbol))
+        End If
+        Dim inputPayload As Dictionary(Of Date, Payload) = GetRawPayload(DataBaseTable.Intraday_Cash, instrumentName, tradingDate.AddDays(-8), tradingDate)
+        If inputPayload IsNot Nothing AndAlso inputPayload.Count > 0 Then
+            Dim tradingDatePayload As IEnumerable(Of KeyValuePair(Of Date, Payload)) = inputPayload.Where(Function(x)
+                                                                                                              Return x.Value.PayloadDate.Date = tradingDate.Date
+                                                                                                          End Function)
+            If tradingDatePayload IsNot Nothing AndAlso tradingDatePayload.Count > 0 Then
+                Dim thirdPreviousTradingDate As Date = Date.MinValue
+                Dim thirdPreviousTradingDatePayload As IEnumerable(Of KeyValuePair(Of Date, Payload)) = Nothing
+                Dim thirdPreviousTradingDateLotSize As Integer = 0
+                Dim secondPreviousTradingDate As Date = Date.MinValue
+                Dim secondPreviousTradingDatePayload As IEnumerable(Of KeyValuePair(Of Date, Payload)) = Nothing
+                Dim secondPreviousTradingDateLotSize As Integer = 0
+                Dim firstPreviousTradingDate As Date = Date.MinValue
+                Dim firstPreviousTradingDatePayload As IEnumerable(Of KeyValuePair(Of Date, Payload)) = Nothing
+                Dim firstPreviousTradingDateLotSize As Integer = 0
+                If tradingDatePayload.FirstOrDefault.Value.PreviousCandlePayload IsNot Nothing Then
+                    thirdPreviousTradingDate = tradingDatePayload.FirstOrDefault.Value.PreviousCandlePayload.PayloadDate.Date
+                    thirdPreviousTradingDatePayload = inputPayload.Where(Function(x)
+                                                                             Return x.Value.PayloadDate.Date = thirdPreviousTradingDate.Date
+                                                                         End Function)
+                    thirdPreviousTradingDateLotSize = GetLotSize(DataBaseTable.Intraday_Futures, tradingSymbol, thirdPreviousTradingDate)
+                End If
+                If thirdPreviousTradingDatePayload.FirstOrDefault.Value.PreviousCandlePayload IsNot Nothing Then
+                    secondPreviousTradingDate = thirdPreviousTradingDatePayload.FirstOrDefault.Value.PreviousCandlePayload.PayloadDate.Date
+                    secondPreviousTradingDatePayload = inputPayload.Where(Function(x)
+                                                                              Return x.Value.PayloadDate.Date = secondPreviousTradingDate.Date
+                                                                          End Function)
+                    secondPreviousTradingDateLotSize = GetLotSize(DataBaseTable.Intraday_Futures, tradingSymbol, secondPreviousTradingDate)
+                End If
+                If secondPreviousTradingDatePayload.FirstOrDefault.Value.PreviousCandlePayload IsNot Nothing Then
+                    firstPreviousTradingDate = secondPreviousTradingDatePayload.FirstOrDefault.Value.PreviousCandlePayload.PayloadDate.Date
+                    firstPreviousTradingDatePayload = inputPayload.Where(Function(x)
+                                                                             Return x.Value.PayloadDate.Date = firstPreviousTradingDate.Date
+                                                                         End Function)
+                    firstPreviousTradingDateLotSize = GetLotSize(DataBaseTable.Intraday_Futures, tradingSymbol, firstPreviousTradingDate)
+                End If
+                If thirdPreviousTradingDate = Date.MinValue OrElse secondPreviousTradingDate = Date.MinValue OrElse firstPreviousTradingDate = Date.MinValue Then
+                    Throw New ApplicationException("Sufficient data isnot available")
+                End If
+                Dim blankCandlePayloadInThirdPreviousDay As IEnumerable(Of KeyValuePair(Of Date, Payload)) = Nothing
+                Dim blankCandlePayloadInSecondPreviousDay As IEnumerable(Of KeyValuePair(Of Date, Payload)) = Nothing
+                Dim blankCandlePayloadInFirstPreviousDay As IEnumerable(Of KeyValuePair(Of Date, Payload)) = Nothing
+
+                blankCandlePayloadInThirdPreviousDay = thirdPreviousTradingDatePayload.Where(Function(x)
+                                                                                                 Return x.Value.Volume < thirdPreviousTradingDateLotSize
+                                                                                             End Function)
+                blankCandlePayloadInSecondPreviousDay = secondPreviousTradingDatePayload.Where(Function(x)
+                                                                                                   Return x.Value.Volume < secondPreviousTradingDateLotSize
+                                                                                               End Function)
+                blankCandlePayloadInFirstPreviousDay = firstPreviousTradingDatePayload.Where(Function(x)
+                                                                                                 Return x.Value.Volume < firstPreviousTradingDateLotSize
+                                                                                             End Function)
+                Dim totalNumberOfCandle As Integer = thirdPreviousTradingDatePayload.Count + secondPreviousTradingDatePayload.Count + firstPreviousTradingDatePayload.Count
+                Dim totalNumberOfBlankCandle As Integer = 0
+                If blankCandlePayloadInThirdPreviousDay IsNot Nothing AndAlso blankCandlePayloadInThirdPreviousDay.Count > 0 Then
+                    totalNumberOfBlankCandle += blankCandlePayloadInThirdPreviousDay.Count
+                End If
+                If blankCandlePayloadInSecondPreviousDay IsNot Nothing AndAlso blankCandlePayloadInSecondPreviousDay.Count > 0 Then
+                    totalNumberOfBlankCandle += blankCandlePayloadInSecondPreviousDay.Count
+                End If
+                If blankCandlePayloadInFirstPreviousDay IsNot Nothing AndAlso blankCandlePayloadInFirstPreviousDay.Count > 0 Then
+                    totalNumberOfBlankCandle += blankCandlePayloadInFirstPreviousDay.Count
+                End If
+                If (totalNumberOfBlankCandle / totalNumberOfCandle) * 100 <= maximumBenchmark Then
+                    ret = True
+                End If
+            End If
+        End If
+        Return ret
     End Function
 #End Region
 
