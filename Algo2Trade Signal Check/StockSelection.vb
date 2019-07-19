@@ -45,18 +45,18 @@ Public Class StockSelection
         Select Case _category
             Case "Cash"
                 Dim dt As DataTable = Nothing
-
+                Dim previousTradingDay As Date = _common.GetPreviousTradingDay(Common.DataBaseTable.EOD_Cash, tradingDate)
                 If conn.State = ConnectionState.Open Then
                     OnHeartbeat("Fetching All Stock Data")
                     Dim cmd As New MySqlCommand("GET_STOCK_CASH_DATA_ATR_VOLUME_ALL_DATES", conn)
                     cmd.CommandType = CommandType.StoredProcedure
-                    cmd.Parameters.AddWithValue("@startDate", tradingDate)
-                    cmd.Parameters.AddWithValue("@endDate", tradingDate)
+                    cmd.Parameters.AddWithValue("@startDate", previousTradingDay)
+                    cmd.Parameters.AddWithValue("@endDate", previousTradingDay)
                     cmd.Parameters.AddWithValue("@numberOfRecords", 0)
                     cmd.Parameters.AddWithValue("@minClose", 100)
                     cmd.Parameters.AddWithValue("@maxClose", 1500)
-                    cmd.Parameters.AddWithValue("@atrPercentage", 2.5)
-                    cmd.Parameters.AddWithValue("@potentialAmount", 500000)
+                    cmd.Parameters.AddWithValue("@atrPercentage", 3)
+                    cmd.Parameters.AddWithValue("@potentialAmount", 300000)
                     'OnHeartbeat("Fetching Top Gainer Looser Data")
                     'Dim cmd As New MySqlCommand("GET_TOP_GAINER_LOOSER_DATA_ATR_VOLUME_ALL_DATES", conn)
                     'cmd.CommandType = CommandType.StoredProcedure
@@ -87,18 +87,18 @@ Public Class StockSelection
                 Throw New NotImplementedException
             Case "Future"
                 Dim dt As DataTable = Nothing
-
+                Dim previousTradingDay As Date = _common.GetPreviousTradingDay(Common.DataBaseTable.EOD_Futures, tradingDate)
                 If conn.State = ConnectionState.Open Then
                     OnHeartbeat("Fetching All Stock Data")
                     Dim cmd As New MySqlCommand("GET_STOCK_CASH_DATA_ATR_VOLUME_ALL_DATES", conn)
                     cmd.CommandType = CommandType.StoredProcedure
-                    cmd.Parameters.AddWithValue("@startDate", tradingDate)
-                    cmd.Parameters.AddWithValue("@endDate", tradingDate)
+                    cmd.Parameters.AddWithValue("@startDate", previousTradingDay)
+                    cmd.Parameters.AddWithValue("@endDate", previousTradingDay)
                     cmd.Parameters.AddWithValue("@numberOfRecords", 0)
                     cmd.Parameters.AddWithValue("@minClose", 100)
                     cmd.Parameters.AddWithValue("@maxClose", 1500)
-                    cmd.Parameters.AddWithValue("@atrPercentage", 2.5)
-                    cmd.Parameters.AddWithValue("@potentialAmount", 500000)
+                    cmd.Parameters.AddWithValue("@atrPercentage", 3)
+                    cmd.Parameters.AddWithValue("@potentialAmount", 300000)
 
                     Dim adapter As New MySqlDataAdapter(cmd)
                     adapter.SelectCommand.CommandTimeout = 3000
