@@ -118,7 +118,6 @@ D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.xml
 D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\Utilities.dll.config
 D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.pdb
 D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.xml
-D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\MySql.Data.xml
 D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\bin\Debug\NLog.xml
 D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbprojAssemblyReference.cache
 D:\algo2trade\Code\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.Resources.resources
