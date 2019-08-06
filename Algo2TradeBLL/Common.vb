@@ -587,6 +587,62 @@ Public Class Common
         End If
         Return ret
     End Function
+    Public Function GetCurrentTradingSymbolWithInstrumentToken(ByVal tableName As DataBaseTable, ByVal tradingDate As Date, ByVal rawInstrumentName As String) As Tuple(Of String, String)
+        Dim ret As Tuple(Of String, String) = Nothing
+        Dim dt As DataTable = Nothing
+        Dim conn As MySqlConnection = OpenDBConnection()
+        Dim cm As MySqlCommand = Nothing
+        Dim activeInstruments As List(Of ActiveInstrumentData) = Nothing
+
+        Select Case tableName
+            Case DataBaseTable.Intraday_Cash, DataBaseTable.EOD_Cash
+                cm = New MySqlCommand("SELECT DISTINCT(`INSTRUMENT_TOKEN`),`TRADING_SYMBOL`,`EXPIRY` FROM `active_instruments_cash` WHERE `TRADING_SYMBOL` = @trd AND `AS_ON_DATE`=@sd", conn)
+                cm.Parameters.AddWithValue("@trd", String.Format("{0}", rawInstrumentName))
+            Case DataBaseTable.Intraday_Currency, DataBaseTable.EOD_Currency
+                cm = New MySqlCommand("SELECT `INSTRUMENT_TOKEN`,`TRADING_SYMBOL`,`EXPIRY` FROM `active_instruments_currency` WHERE `TRADING_SYMBOL` LIKE @trd AND `AS_ON_DATE`=@sd", conn)
+                cm.Parameters.AddWithValue("@trd", String.Format("{0}%", rawInstrumentName))
+            Case DataBaseTable.Intraday_Commodity, DataBaseTable.EOD_Commodity
+                cm = New MySqlCommand("SELECT `INSTRUMENT_TOKEN`,`TRADING_SYMBOL`,`EXPIRY` FROM `active_instruments_commodity` WHERE `TRADING_SYMBOL` LIKE @trd AND `AS_ON_DATE`=@sd", conn)
+                cm.Parameters.AddWithValue("@trd", String.Format("{0}%", rawInstrumentName))
+            Case DataBaseTable.Intraday_Futures, DataBaseTable.EOD_Futures
+                cm = New MySqlCommand("SELECT `INSTRUMENT_TOKEN`,`TRADING_SYMBOL`,`EXPIRY` FROM `active_instruments_futures` WHERE `TRADING_SYMBOL` LIKE @trd AND `AS_ON_DATE`=@sd", conn)
+                cm.Parameters.AddWithValue("@trd", String.Format("{0}%", rawInstrumentName))
+        End Select
+
+        OnHeartbeat(String.Format("Fetching required data from DataBase for {0} on {1}", rawInstrumentName, tradingDate.ToShortDateString))
+
+        cm.Parameters.AddWithValue("@sd", tradingDate.Date.ToString("yyyy-MM-dd"))
+        Dim adapter As New MySqlDataAdapter(cm)
+        adapter.SelectCommand.CommandTimeout = 300
+        dt = New DataTable()
+        adapter.Fill(dt)
+        If dt IsNot Nothing AndAlso dt.Rows.Count > 0 Then
+            For i = 0 To dt.Rows.Count - 1
+                Dim instrumentData As New ActiveInstrumentData With
+                        {.Token = dt.Rows(i).Item(0),
+                         .TradingSymbol = dt.Rows(i).Item(1).ToString.ToUpper,
+                         .Expiry = If(IsDBNull(dt.Rows(i).Item(2)), Date.MaxValue, dt.Rows(i).Item(2))}
+                If activeInstruments Is Nothing Then activeInstruments = New List(Of ActiveInstrumentData)
+                activeInstruments.Add(instrumentData)
+            Next
+        End If
+        If activeInstruments IsNot Nothing AndAlso activeInstruments.Count > 0 Then
+            Dim minExipry As Date = activeInstruments.Min(Function(x)
+                                                              If x.Expiry.Date = tradingDate.Date Then
+                                                                  Return Date.MaxValue
+                                                              Else
+                                                                  Return x.Expiry
+                                                              End If
+                                                          End Function)
+            Dim currentInstrument As ActiveInstrumentData = activeInstruments.Find(Function(x)
+                                                                                       Return x.Expiry = minExipry
+                                                                                   End Function)
+            If currentInstrument IsNot Nothing Then
+                ret = New Tuple(Of String, String)(currentInstrument.Token, currentInstrument.TradingSymbol)
+            End If
+        End If
+        Return ret
+    End Function
     Public Function PassedVolumeFilter(ByVal tradingSymbol As String, ByVal tradingDate As Date, ByVal maximumBenchmark As Decimal) As Boolean
         Dim ret As Boolean = False
         Dim instrumentName As String = Nothing
@@ -665,6 +721,12 @@ Public Class Common
         End If
         Return ret
     End Function
+
+    Private Class ActiveInstrumentData
+        Public Token As String
+        Public TradingSymbol As String
+        Public Expiry As Date
+    End Class
 #End Region
 
 #Region "DB Connection"
