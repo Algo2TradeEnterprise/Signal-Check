@@ -105,6 +105,7 @@
     </Compile>
     <Compile Include="StrategyRules\BollingerWithATRBands.vb" />
     <Compile Include="StrategyRules\ConstrictionAtBreakout.vb" />
+    <Compile Include="StrategyRules\DayHighLow.vb" />
     <Compile Include="StrategyRules\DonchianBreakoutShortTrend.vb" />
     <Compile Include="StrategyRules\DoubleVolumeEOD.vb" />
     <Compile Include="StrategyRules\EODSignal.vb" />
