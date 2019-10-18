@@ -305,6 +305,8 @@ Public Class frmMain
                 rule = New MarketOpenHABreakoutScreener(_canceller, category, name, timeFrame, useHA)
             Case 20
                 rule = New VolumeWithCandleRange(_canceller, category, name, timeFrame, useHA)
+            Case 21
+                rule = New DayHighLow(_canceller, category, name, timeFrame, useHA)
         End Select
         AddHandler Rule.Heartbeat, AddressOf OnHeartbeat
         AddHandler Rule.WaitingFor, AddressOf OnWaitingFor
