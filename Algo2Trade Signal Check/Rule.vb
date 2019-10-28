@@ -45,6 +45,39 @@ Public MustInherit Class Rule
         AddHandler _common.DocumentDownloadComplete, AddressOf OnDocumentDownloadComplete
     End Sub
     Public MustOverride Async Function RunAsync(ByVal startDate As Date, ByVal endDate As Date) As Task(Of DataTable)
+
+
+    Public Function CalculatePL(ByVal stockName As String, ByVal buyPrice As Decimal, ByVal sellPrice As Decimal, ByVal quantity As Integer, ByVal lotSize As Integer) As Decimal
+        Dim potentialBrokerage As New Calculator.BrokerageAttributes
+        Dim calculator As New Calculator.BrokerageCalculator(_canceller)
+
+        'calculator.Intraday_Equity(buyPrice, sellPrice, quantity, potentialBrokerage)
+        'calculator.Currency_Futures(buyPrice, sellPrice, quantity / lotSize, potentialBrokerage)
+        'calculator.Commodity_MCX(stockName, buyPrice, sellPrice, quantity / lotSize, potentialBrokerage)
+        calculator.FO_Futures(buyPrice, sellPrice, quantity, potentialBrokerage)
+
+        Return potentialBrokerage.NetProfitLoss
+    End Function
+
+    Public Function CalculateBuffer(ByVal price As Decimal, ByVal floorOrCeiling As Utilities.Numbers.RoundOfType) As Decimal
+        Dim bufferPrice As Decimal = Nothing
+        'Assuming 1% target, we can afford to have buffer as 2.5% of that 1% target
+        bufferPrice = Utilities.Numbers.NumberManipulation.ConvertFloorCeling(price * 0.01 * 0.025, 0.05, floorOrCeiling)
+        Return bufferPrice
+    End Function
+
+    Public Function CalculateQuantityFromInvestment(ByVal lotSize As Integer, ByVal totalInvestment As Decimal, ByVal stockPrice As Decimal, ByVal allowIncreaseCapital As Boolean) As Integer
+        Dim quantity As Integer = lotSize
+        Dim quantityMultiplier As Integer = 1
+        If allowIncreaseCapital Then
+            quantityMultiplier = Math.Ceiling(totalInvestment / (quantity * stockPrice / 30))
+        Else
+            quantityMultiplier = Math.Floor(totalInvestment / (quantity * stockPrice / 30))
+        End If
+        If quantityMultiplier = 0 Then quantityMultiplier = 1
+        Return quantity * quantityMultiplier
+    End Function
+
 #Region "IDisposable Support"
     Private disposedValue As Boolean ' To detect redundant calls
 

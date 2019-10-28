@@ -4,7 +4,7 @@ Imports Utilities.Network
 
 Namespace Calculator
     Public Class BrokerageCalculator
-        Private _canceller As CancellationTokenSource
+
 #Region "Events/Event handlers"
         Public Event DocumentDownloadComplete()
         Public Event DocumentRetryStatus(ByVal currentTry As Integer, ByVal totalTries As Integer)
@@ -25,12 +25,17 @@ Namespace Calculator
         End Sub
 #End Region
 
+        Private ReadOnly _cts As CancellationTokenSource
+        Public Sub New(calceller As CancellationTokenSource)
+            _cts = calceller
+        End Sub
+
 #Region "BrowseHTTP"
-        Private Async Function OpenJs(ByVal canceller As CancellationTokenSource) As Task
+        Private Async Function GetCommodityMultiplier() As Task
             Dim proxyToBeUsed As HttpProxy = Nothing
             Dim ret As List(Of String) = Nothing
 
-            Using browser As New HttpBrowser(proxyToBeUsed, Net.DecompressionMethods.GZip, New TimeSpan(0, 1, 0), canceller)
+            Using browser As New HttpBrowser(proxyToBeUsed, Net.DecompressionMethods.GZip, New TimeSpan(0, 1, 0), _cts)
                 AddHandler browser.DocumentDownloadComplete, AddressOf OnDocumentDownloadComplete
                 AddHandler browser.Heartbeat, AddressOf OnHeartbeat
                 AddHandler browser.WaitingFor, AddressOf OnWaitingFor
@@ -49,18 +54,12 @@ Namespace Calculator
                         Dim map As String = Utilities.Strings.GetTextBetween("COMMODITY_MULTIPLIER_MAP=", "},", jString)
                         If map IsNot Nothing Then
                             map = map & "}"
-                            Gloval_Var.retDictionary = Utilities.Strings.JsonDeserialize(map)
+                            GlobalVar.retDictionary = Utilities.Strings.JsonDeserialize(map)
                         End If
                     End If
                 End If
             End Using
         End Function
-#End Region
-
-#Region "Constructor"
-        Public Sub New(calceller As CancellationTokenSource)
-            _canceller = calceller
-        End Sub
 #End Region
 
 #Region "Public Fuctioncs"
@@ -144,10 +143,9 @@ Namespace Calculator
             Dim n = If((g * v * 0.0001) > 20, 20, Math.Round((g * v * 0.0001), (2)))
             Dim a = Math.Round((i + n), (2))
             Dim r = Convert.ToInt32(g * v * 0.0001)
-            Dim s = Math.Round((0.000021 * o), (2))
             Dim l = Math.Round((0.000019 * o), (2))
-            Dim c = Math.Round((0.000002 * o), (2))
-            Dim p = Math.Round((0.18 * (a + s)), (2))
+            Dim c = 0
+            Dim p = Math.Round((0.18 * (a + l)), (2))
 
             Output.Turnover = o
             Output.Brokerage = a
@@ -168,14 +166,13 @@ Namespace Calculator
             Output.Sell = Sell
             Output.Quantity = Quantity
 
-            If Gloval_Var.retDictionary Is Nothing Then
-                Dim cancel As New CancellationTokenSource
-                Dim task = OpenJs(cancel)
+            If GlobalVar.retDictionary Is Nothing Then
+                Dim task = GetCommodityMultiplier()
                 task.Wait()
             End If
 
-            Dim t = Gloval_Var.retDictionary(item).ToString.Substring(0, Gloval_Var.retDictionary(item).ToString.Length - 1)
-            Dim e = Gloval_Var.retDictionary(item).ToString.Substring(Gloval_Var.retDictionary(item).ToString.Length - 1)
+            Dim t = GlobalVar.retDictionary(item).ToString.Substring(0, GlobalVar.retDictionary(item).ToString.Length - 1)
+            Dim e = GlobalVar.retDictionary(item).ToString.Substring(GlobalVar.retDictionary(item).ToString.Length - 1)
             Output.Multiplier = t
             Dim o = Math.Round(((m + g) * t * v), 2)
             Dim i = Nothing
@@ -200,20 +197,20 @@ Namespace Calculator
             Dim c = 0.00
             s = If(e = "a", Math.Round((0.000036 * o), 2), Math.Round((0.0000105 * o), 2))
             l = If(e = "a", Math.Round((0.000026 * o), 2), Math.Round((0.0000005 * o), 2))
-            c = Math.Round((0.00001 * o), 2)
+            c = 0
             If item = "RBDPMOLEIN" And o >= 100000.0 Then
                 Dim p = Convert.ToInt32(Math.Round((o / 100000.0), 2))
                 s = p
             End If
             If item = "CASTORSEED" Then
                 l = Math.Round((0.000005 * o), 2)
-                c = Math.Round((0.00001 * o), 2)
+                c = 0
             ElseIf item = "RBDPMOLEIN" Then
                 l = Math.Round((0.00001 * o), 2)
-                c = Math.Round((0.00001 * o), 2)
+                c = 0
             ElseIf item = "PEPPER" Then
                 l = Math.Round((0.0000005 * o), 2)
-                c = Math.Round((0.00001 * o), 2)
+                c = 0
             End If
             Dim d = Math.Round((0.18 * (a + s)), 2)
 
@@ -224,6 +221,38 @@ Namespace Calculator
             Output.Clearing = c
             Output.GST = d
             Output.TotalTax = a + r + s + d + Output.SEBI
+
+            Return Nothing
+        End Function
+        Public Function Currency_Futures(ByVal Buy As Double, ByVal Sell As Double, ByVal Quantity As Integer, ByRef Output As BrokerageAttributes)
+
+            Dim m = Buy
+            Dim g = Sell
+            Dim v = Quantity * 1000
+            Output.Buy = Buy
+            Output.Sell = Sell
+            Output.Quantity = Quantity * 1000
+            Output.Multiplier = 1
+            Output.CTT = 0
+
+            'Dim t = 1.5
+            'Dim e = 1.5
+
+            Dim t = Math.Round(((m + g) * v), (2))
+            Dim e = If((m * v * 0.0001) > 20, 20, Math.Round((m * v * 0.0001), (2)))
+            Dim o = If((g * v * 0.0001) > 20, 20, Math.Round((g * v * 0.0001), (2)))
+            Dim i = Math.Round((e + o), (2))
+            Dim n = Math.Round((0.000011 * t), (2))
+            Dim a = Math.Round((0.000009 * t), (2))
+            Dim r = 0
+            Dim s = Math.Round((0.18 * (i + n)), (2))
+
+            Output.Turnover = t
+            Output.Brokerage = i
+            Output.Exchange = a
+            Output.Clearing = r
+            Output.GST = s
+            Output.TotalTax = Output.Brokerage + n + Output.GST + Output.SEBI
 
             Return Nothing
         End Function
