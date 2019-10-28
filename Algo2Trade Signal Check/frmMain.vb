@@ -307,6 +307,8 @@ Public Class frmMain
                 rule = New VolumeWithCandleRange(_canceller, category, name, timeFrame, useHA)
             Case 21
                 rule = New DayHighLow(_canceller, category, name, timeFrame, useHA)
+            Case 22
+                rule = New LowSLCandle(_canceller, category, name, timeFrame, useHA)
         End Select
         AddHandler Rule.Heartbeat, AddressOf OnHeartbeat
         AddHandler Rule.WaitingFor, AddressOf OnWaitingFor
