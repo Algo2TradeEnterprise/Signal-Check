@@ -227,3 +227,23 @@ G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.vbproj.CopyC
 G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.dll
 G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.xml
 G:\algo2trade\Algo2Trade Signal Check\Utilities\obj\Debug\Utilities.pdb
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\Utilities.dll.config
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\Utilities.dll
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\Utilities.pdb
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\Utilities.xml
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\HtmlAgilityPack.dll
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\MySql.Data.dll
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\Newtonsoft.Json.dll
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\NLog.dll
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\HtmlAgilityPack.pdb
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\HtmlAgilityPack.xml
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\Newtonsoft.Json.xml
+E:\Algo2Trade\Code\Signal Check\Utilities\bin\Debug\NLog.xml
+E:\Algo2Trade\Code\Signal Check\Utilities\obj\Debug\Utilities.vbprojAssemblyReference.cache
+E:\Algo2Trade\Code\Signal Check\Utilities\obj\Debug\Utilities.Resources.resources
+E:\Algo2Trade\Code\Signal Check\Utilities\obj\Debug\Utilities.vbproj.GenerateResource.cache
+E:\Algo2Trade\Code\Signal Check\Utilities\obj\Debug\Utilities.vbproj.CoreCompileInputs.cache
+E:\Algo2Trade\Code\Signal Check\Utilities\obj\Debug\Utilities.vbproj.CopyComplete
+E:\Algo2Trade\Code\Signal Check\Utilities\obj\Debug\Utilities.dll
+E:\Algo2Trade\Code\Signal Check\Utilities\obj\Debug\Utilities.xml
+E:\Algo2Trade\Code\Signal Check\Utilities\obj\Debug\Utilities.pdb

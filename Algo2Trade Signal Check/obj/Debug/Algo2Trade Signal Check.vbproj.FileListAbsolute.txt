@@ -106,3 +106,30 @@ G:\algo2trade\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal C
 G:\algo2trade\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.exe
 G:\algo2trade\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.xml
 G:\algo2trade\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.pdb
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.exe.config
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.exe
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.pdb
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2Trade Signal Check.xml
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.dll
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\MySql.Data.dll
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.dll
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\NLog.dll
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.dll
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.pdb
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.xml
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Algo2TradeBLL.dll.config
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.pdb
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.xml
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\Utilities.dll.config
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\NLog.xml
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.pdb
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\bin\Debug\HtmlAgilityPack.xml
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbprojAssemblyReference.cache
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade_Signal_Check.frmMain.resources
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade_Signal_Check.Resources.resources
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.GenerateResource.cache
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.CoreCompileInputs.cache
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.vbproj.CopyComplete
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.exe
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.xml
+E:\Algo2Trade\Code\Signal Check\Algo2Trade Signal Check\obj\Debug\Algo2Trade Signal Check.pdb

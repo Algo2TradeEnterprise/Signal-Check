@@ -149,3 +149,25 @@ G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbpr
 G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.dll
 G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.xml
 G:\algo2trade\Algo2Trade Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.pdb
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll.config
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.dll
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.pdb
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\Algo2TradeBLL.xml
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.dll
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\MySql.Data.dll
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\Utilities.dll
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\NLog.dll
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\Utilities.pdb
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\Utilities.xml
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\Utilities.dll.config
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.pdb
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\HtmlAgilityPack.xml
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\bin\Debug\NLog.xml
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbprojAssemblyReference.cache
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.Resources.resources
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.GenerateResource.cache
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CoreCompileInputs.cache
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.vbproj.CopyComplete
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.dll
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.xml
+E:\Algo2Trade\Code\Signal Check\Algo2TradeBLL\obj\Debug\Algo2TradeBLL.pdb
