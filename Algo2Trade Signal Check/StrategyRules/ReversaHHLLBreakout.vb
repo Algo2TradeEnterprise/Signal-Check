@@ -1,7 +1,8 @@
 ﻿Imports System.Threading
 Imports Algo2TradeBLL
+Imports Utilities.Numbers.NumberManipulation
 
-Public Class StallPattern
+Public Class ReversaHHLLBreakout
     Inherits Rule
     Public Sub New(ByVal canceller As CancellationTokenSource, ByVal stockCategory As String, ByVal stockName As String, ByVal timeFrame As Integer, ByVal useHA As Boolean)
         MyBase.New(canceller, stockCategory, stockName, timeFrame, useHA)
@@ -11,9 +12,7 @@ Public Class StallPattern
         Dim ret As New DataTable
         ret.Columns.Add("Date")
         ret.Columns.Add("Instrument")
-        ret.Columns.Add("Range %")
-        ret.Columns.Add("Volume %")
-        ret.Columns.Add("ATR Range %")
+        ret.Columns.Add("Signal")
         Dim stockData As StockSelection = New StockSelection(_canceller, _category, _name)
         AddHandler stockData.Heartbeat, AddressOf OnHeartbeat
         AddHandler stockData.WaitingFor, AddressOf OnWaitingFor
@@ -74,21 +73,27 @@ Public Class StallPattern
                         Dim ATRPayload As Dictionary(Of Date, Decimal) = Nothing
                         Indicator.ATR.CalculateATR(14, inputPayload, ATRPayload)
                         If currentDayPayload IsNot Nothing AndAlso currentDayPayload.Count > 0 Then
-                            For Each runningPayload In currentDayPayload.Keys
+                            For Each runningPayload In currentDayPayload.Values
                                 _canceller.Token.ThrowIfCancellationRequested()
-                                If currentDayPayload(runningPayload).PreviousCandlePayload IsNot Nothing Then
-                                    If currentDayPayload(runningPayload).CandleRange <= currentDayPayload(runningPayload).PreviousCandlePayload.CandleRange / 2 AndAlso
-                                        currentDayPayload(runningPayload).Volume >= currentDayPayload(runningPayload).PreviousCandlePayload.Volume / 2 AndAlso
-                                        currentDayPayload(runningPayload).PreviousCandlePayload.CandleRange >= 2 * ATRPayload(currentDayPayload(runningPayload).PreviousCandlePayload.PayloadDate) Then
-                                        Dim middlePoint As Decimal = (currentDayPayload(runningPayload).PreviousCandlePayload.High + currentDayPayload(runningPayload).PreviousCandlePayload.Low) / 2
-                                        If currentDayPayload(runningPayload).High <= middlePoint OrElse
-                                            currentDayPayload(runningPayload).Low >= middlePoint Then
+                                If runningPayload.PreviousCandlePayload IsNot Nothing AndAlso
+                                    runningPayload.PreviousCandlePayload.PreviousCandlePayload.PayloadDate.Date = runningPayload.PayloadDate.Date Then
+                                    Dim buffer As Decimal = CalculateBuffer(runningPayload.High, RoundOfType.Floor)
+                                    If runningPayload.PreviousCandlePayload.High > runningPayload.PreviousCandlePayload.PreviousCandlePayload.High + buffer AndAlso
+                                        runningPayload.PreviousCandlePayload.Low > runningPayload.PreviousCandlePayload.PreviousCandlePayload.Low + buffer Then
+                                        If runningPayload.Low < runningPayload.PreviousCandlePayload.PreviousCandlePayload.Low - buffer Then
                                             Dim row As DataRow = ret.NewRow
-                                            row("Date") = runningPayload
-                                            row("Instrument") = currentDayPayload(runningPayload).TradingSymbol
-                                            row("Range %") = (currentDayPayload(runningPayload).CandleRange / currentDayPayload(runningPayload).PreviousCandlePayload.CandleRange) * 100
-                                            row("Volume %") = (currentDayPayload(runningPayload).Volume / currentDayPayload(runningPayload).PreviousCandlePayload.Volume) * 100
-                                            row("ATR Range %") = (currentDayPayload(runningPayload).CandleRange / ATRPayload(runningPayload)) * 100
+                                            row("Date") = runningPayload.PayloadDate
+                                            row("Instrument") = runningPayload.TradingSymbol
+                                            row("Signal") = -1
+                                            ret.Rows.Add(row)
+                                        End If
+                                    ElseIf runningPayload.PreviousCandlePayload.Low < runningPayload.PreviousCandlePayload.PreviousCandlePayload.Low - buffer AndAlso
+                                        runningPayload.PreviousCandlePayload.High < runningPayload.PreviousCandlePayload.PreviousCandlePayload.High - buffer Then
+                                        If runningPayload.High > runningPayload.PreviousCandlePayload.PreviousCandlePayload.High + buffer Then
+                                            Dim row As DataRow = ret.NewRow
+                                            row("Date") = runningPayload.PayloadDate
+                                            row("Instrument") = runningPayload.TradingSymbol
+                                            row("Signal") = +1
                                             ret.Rows.Add(row)
                                         End If
                                     End If
